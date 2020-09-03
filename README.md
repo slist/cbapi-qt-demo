@@ -9,14 +9,15 @@ sudo yum install qt5-qtbase qt5-qtbase-devel vim-X11 gcc-c++ qt5-linguist
 ### Use QT5 by default
 
 sudo ln -s /usr/bin/qmake-qt5 /usr/bin/qmake
+
 sudo ln -s /usr/bin/lrelease-qt5 /usr/bin/lrelease
  
 ### Build
 
-tar zxvf cb-1.0.tgz
-cd cb-1.0
 qmake-qt5
+
 make
+
 ./cb
 
 ## How to build on Linux Ubuntu
@@ -27,16 +28,18 @@ sudo apt-get install g++ make qt5-default qt5-qmake
 
 ### Build
 
-tar zxvf cb-1.0.tgz
-cd cb-1.0
 qmake-qt5
+
 make
+
 ./cb
 
 ## Warning
 
 Warning : Settings/passwords are stored in plain text.
+
 For Linux, see ~/.config/Carbon Black/cb.conf
+
 For Windows, see HKEY_CURRENT_USER\Software\Carbon Black\cb
 
 ## Resources
@@ -47,7 +50,7 @@ For Windows, see HKEY_CURRENT_USER\Software\Carbon Black\cb
 
 ## Support
 
-If you have questions on the Carbon Black Qt API, please contact us at dev-support@carbonblack.com
+If you have questions on the Carbon Black Qt API, please contact us at stephane.list@gmail.com
 
 ## License
 
