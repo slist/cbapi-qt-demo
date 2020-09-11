@@ -1,5 +1,16 @@
 # Carbon Black Qt API demo
 
+## What can it do? 
+
+* Lists policies with indicators that tell you things like number of rules, UI `ON/OFF`, GoLive `ON/OFF` 
+
+* Let's you compare policies side-by-side, even in different customer instances — you can select two policies, see exactly where there are differences and what they are 
+
+* Copy policies between instances — if you have a policy applied to one customer and you want to apply that same policy to another 
+
+* Policies that are applied can then be viewed in the product UI under Enforce > Policies 
+
+
 ## How to build on Linux CentOS
 
 ### Install required packages
