@@ -61,7 +61,7 @@ For Windows, see HKEY_CURRENT_USER\Software\Carbon Black\cb
 
 ## Support
 
-If you have questions on the Carbon Black Qt API, please contact us at stephane.list@gmail.com
+If you have questions on the Carbon Black Qt API, please contact me at slist@vmware.com
 
 ## License
 
