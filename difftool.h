@@ -21,7 +21,6 @@ public:
 private slots:
     void on_buttonBox_accepted();
     void on_pushButton_clicked();
-
     void on_lineEdit_tool_textChanged(const QString &arg1);
 
 private:

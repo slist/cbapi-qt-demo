@@ -9,8 +9,6 @@ Policy::Policy(QWidget *parent) :
     ui(new Ui::Policy)
 {
     ui->setupUi(this);
-    ui->checkBox->setIcon(QIcon(":/cb.jpeg"));
-    ui->checkBox->setIconSize(QSize(40,40));
 }
 
 Policy::~Policy()

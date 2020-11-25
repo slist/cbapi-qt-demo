@@ -9,6 +9,7 @@
 #include <QJsonValueRef>
 #include <QSettings>
 #include <QStandardPaths>
+#include <QMessageBox>
 
 #include "policy.h"
 #include "policies.h"
@@ -52,7 +53,6 @@ void Policies::download_policies()
 {
     QString auth = api_secret + "/" + api_id;
 
-    //emit log(name + ": Download policies");
     // Remove text after SPACE in server name
     int i = server.indexOf(" ");
     if (i > 0) {
@@ -72,6 +72,7 @@ void Policies::slotError(QNetworkReply::NetworkError)
 {
     qDebug() << "Network Error";
     emit log(name + ": Network error");
+    QMessageBox::critical(this, QString("Network Error: %0").arg(reply->error()), reply->errorString(), QMessageBox::Ok);
 }
 
 void Policies::slotSslErrors(QList<QSslError>)
@@ -101,12 +102,9 @@ void Policies::slotFinished()
         QTextStream out(&qF);
         out << policies;
         qF.close();
-        // emit log ui->logTextEdit->append("Policy saved in " + qP);
     } else {
-        // emit error ui->logTextEdit->append("Can't save policy in " + qP);
+        qWarning() << "Can't save policy in " << qP;
     }
-
-    //emit log ui->logTextEdit->append("JSON parsing STARTING");
 
     QJsonParseError *e = new QJsonParseError();
 
@@ -149,7 +147,8 @@ void Policies::slotFinished()
             out << qPol;
             qFile.close();
         } else {
-            qWarning() << "Can't open file";        }
+            qWarning() << "Can't open file";
+        }
 
         // Add policy to the widget
         QListWidgetItem *item = new QListWidgetItem(this);

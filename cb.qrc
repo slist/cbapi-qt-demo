@@ -1,6 +1,23 @@
 <RCC>
     <qresource prefix="/">
-        <file>cb.jpeg</file>
-        <file>open.png</file>
+        <file>img/cb.jpeg</file>
+        <file>img/open.png</file>
+        <file>img/onprem.png</file>
+        <file>img/cloud.png</file>
+        <file>img/feed.png</file>
+        <file>img/watchlist.svg</file>
+        <file>img/new.png</file>
+        <file>img/download.png</file>
+        <file>img/json.png</file>
+        <file>img/extlink.png</file>
+        <file>img/qt-cbapi.png</file>
+        <file>img/search.png</file>
+        <file>img/tools.png</file>
+        <file>img/save.png</file>
+        <file>img/cancel.png</file>
+        <file>img/dustbin.png</file>
+        <file>img/workflow.png</file>
+        <file>img/ip-list.png</file>
+        <file>img/banned.png</file>
     </qresource>
 </RCC>

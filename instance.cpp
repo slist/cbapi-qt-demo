@@ -31,6 +31,11 @@ QString Instance::get_api_secret()
     return ui->api_secret_LineEdit->text();
 }
 
+QString Instance::get_org_key()
+{
+    return ui->org_key_LineEdit->text();
+}
+
 QString Instance::get_server()
 {
     QString server(ui->env_comboBox->currentText());
@@ -66,8 +71,16 @@ void Instance::set_server(const QString & s)
     ui->env_comboBox->setCurrentText(s);
 }
 
-bool Instance::isValid() {
-    if (get_name().isEmpty() || get_api_id().isEmpty() || get_api_secret().isEmpty())
+void Instance::set_org_key(const QString & s)
+{
+    ui->org_key_LineEdit->setText(s);
+}
+
+bool Instance::isValid()
+{
+    if ((instanceType == Instances::NgavInstanceType) && ((get_name().isEmpty() || get_api_id().isEmpty() || get_api_secret().isEmpty())))
+        return false;
+    if ((instanceType == Instances::EedrInstanceType) && ((get_name().isEmpty() || get_api_id().isEmpty() || get_api_secret().isEmpty() || get_org_key().isEmpty())))
         return false;
     return true;
 }
@@ -87,13 +100,36 @@ void Instance::on_api_secret_LineEdit_textChanged(const QString & /* arg1 */)
     check_validity();
 }
 
+void Instance::on_org_key_LineEdit_textChanged(const QString & /* arg1 */)
+{
+    check_validity();
+}
+
 void Instance::check_validity()
 {
-    if ((ui->customer_name_LineEdit->text().isEmpty()) ||
-            (ui->api_id_LineEdit->text().isEmpty()) ||
-            (ui->api_secret_LineEdit->text().isEmpty())) {
+    if (!isValid()) {
         ui->label_invalid->show();
     } else {
         ui->label_invalid->hide();
     }
+}
+
+void Instance::setInstanceType(Instances::InstanceType type)
+{
+    instanceType = type;
+
+    switch(type) {
+    case Instances::NgavInstanceType:
+        ui->org_label->hide();
+        ui->org_key_LineEdit->hide();
+        break;
+    case Instances::EedrInstanceType:
+        break;
+    case Instances::EdrInstanceType:
+        break;
+    default:
+        qDebug("Unknown instance type");
+        break;
+    }
+    check_validity();
 }

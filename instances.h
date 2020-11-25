@@ -18,15 +18,19 @@ public:
     explicit Instances(QWidget *parent = nullptr);
     ~Instances();
 
+    enum InstanceType { NgavInstanceType=2, EedrInstanceType, EdrInstanceType }; // TODO : remove =2
+    Q_ENUM(InstanceType)
+    void setInstanceType(InstanceType type);
+
+public slots:
+    void on_save();
+
 private slots:
     void on_pushButton_add_clicked();
 
-    void on_buttonBox_accepted();
-
-    void on_buttonBox_rejected();
-
 private:
     Ui::Instances *ui;
+    InstanceType instanceType;
 };
 
 #endif // INSTANCES_H

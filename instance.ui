@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>444</width>
-    <height>170</height>
+    <width>448</width>
+    <height>201</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <item>
     <layout class="QFormLayout" name="formLayout">
      <item row="0" column="0">
-      <widget class="QLabel" name="org_label">
+      <widget class="QLabel" name="name_label">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -63,14 +63,14 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
+     <item row="4" column="0">
       <widget class="QLabel" name="env_label">
        <property name="text">
         <string>Environment:</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="4" column="1">
       <widget class="QComboBox" name="env_comboBox">
        <property name="currentIndex">
         <number>5</number>
@@ -112,9 +112,24 @@
        </item>
        <item>
         <property name="text">
-         <string>prodNRT (APJ)</string>
+         <string>prodnrt (Japan)</string>
         </property>
        </item>
+        <item>
+        <property name="text">
+         <string>prodsyd (Australia)</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="org_key_LineEdit"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="org_label">
+       <property name="text">
+        <string>Org Key:</string>
+       </property>
       </widget>
      </item>
     </layout>

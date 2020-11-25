@@ -30,18 +30,16 @@ void Copy::set_inst_list(QStringList list)
     }
 }
 
-void Copy::add_pol(QString a, QString b)
+void Copy::add_pol(const QString & a, const QString & b)
 {
     int row = ui->tableWidget_selection->rowCount() + 1;
-    ui->tableWidget_selection->setRowCount(row--);
-
     QTableWidgetItem *newItem_inst= new QTableWidgetItem(a);
     QTableWidgetItem *newItem_pol = new QTableWidgetItem(b);
+
+    ui->tableWidget_selection->setRowCount(row--);
     ui->tableWidget_selection->setItem(row, 0, newItem_inst);
     ui->tableWidget_selection->setItem(row, 1, newItem_pol);
-
     ui->tableWidget_selection->resizeColumnToContents(0);
-
     nb_policy_to_copy++;
 }
 
@@ -72,7 +70,6 @@ void Copy::send(void)
         }
     }
     settings.endArray();
-    //qDebug() << "dest_api : " << dest_server << " " << dest_api_id << " / " << dest_api_secret;
 
     QString auth = dest_api_secret + "/" + dest_api_id;
 
@@ -92,39 +89,11 @@ void Copy::send(void)
         f += QStandardPaths::writableLocation(QStandardPaths::TempLocation);
         f += QString("/%1_%2.txt").arg(src_inst).arg(policy);
 
-        //qDebug() << "src " << f;
-
         QNetworkAccessManager * manager = new QNetworkAccessManager(this);
-
         QNetworkRequest * request = new QNetworkRequest(QUrl(url));
         request->setRawHeader("X-Auth-Token", auth.toLocal8Bit());
         request->setRawHeader("Content-Type", "application/json");
 
-
-        /*
-        "policyInfo": {
-            "description": "test policy for documentation",
-            "name": "documentation test",
-            "policy": {
-                "avSettings": {
-                    "apc": {
-                        "enabled": false,
-                        "maxExeDelay": 45,
-
-                       ....
-
-
-                    "name": "UNINSTALL_CODE",
-                    "value": "false"
-                }
-            ]
-        },
-        "priorityLevel": "LOW",
-        "version": 2
-    }
-}
-
-*/
         QByteArray * data = new QByteArray("");
 
         data->append("{ \"policyInfo\": {                      \
@@ -149,12 +118,9 @@ void Copy::send(void)
 
         data->append(", \"priorityLevel\": \"LOW\", \"version\": 2 }}");
 
-        //        qDebug() << *data;
-        // QNetworkReply *reply;
         connect(manager,SIGNAL(finished(QNetworkReply*)),manager,SLOT(deleteLater()));
         connect(manager,SIGNAL(finished(QNetworkReply*)),this,SLOT(copy_finished(QNetworkReply*)));
-
-        /* reply = */ manager->post(*request, *data);
+        manager->post(*request, *data);
     }
 }
 
@@ -180,5 +146,5 @@ void Copy::copy_finished(QNetworkReply* reply)
 
 void Copy::on_pushButton_cancel_clicked()
 {
-    this->deleteLater();
+     this->deleteLater();
 }

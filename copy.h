@@ -27,7 +27,8 @@ private:
 
 public:
     void set_inst_list(QStringList);
-    void add_pol(QString, QString);
+    void add_pol(const QString &, const QString &);
+
 private slots:
     void on_pushButton_copy_clicked();
     void copy_finished(QNetworkReply *);
