@@ -30,8 +30,9 @@ Banned::Banned(QWidget *parent) :
     formatsTable->setHorizontalHeaderLabels(labels);
     formatsTable->horizontalHeader()->setStretchLastSection(true);
 
-    formatsTable->setVisible(false); // enable for debug only
-
+#ifndef QT_QML_DEBUG
+    formatsTable->setVisible(false);
+#endif
     connect(dropArea, &DropArea::changed, this, &Banned::updateFormatsTable);
     connect(dropArea, &DropArea::dropped, this, &Banned::updateBannedText);
 }
@@ -84,10 +85,20 @@ void Banned::updateBannedText(const QMimeData *mimeData)
         return;
 
     for (const QString &format : mimeData->formats()) {
+        QString text;
+
         if (format == QLatin1String("text/uri-list")) {
             QList<QUrl> urlList = mimeData->urls();
             for (int i = 0; i < urlList.size() && i < 32; ++i) {
                 addFile(urlList.at(i).toString());
+            }
+        } else if (format == QLatin1String("text/plain")) {
+            text = mimeData->text().simplified();
+            QStringList Lines = text.split(' ');
+            for (int i = 0; i < Lines.size(); i++) {
+                if (Lines[i].size() == 64) {
+                    ui->textEdit_hashlist->append("BLACK_LIST,SHA256," + Lines[i] + ",");
+                }
             }
         }
     }
@@ -108,7 +119,7 @@ void Banned::addFile(const QString & fileName)
     {
         f = fileName.mid(sizeof("file:///") - 1); // On Windows file path starts with c: and not /
     } else {
-       f = fileName.mid(sizeof("file://") - 1); // Keep leading / on Unix
+        f = fileName.mid(sizeof("file://") - 1); // Keep leading / on Unix
     }
 
     QFile file(f);
