@@ -72,7 +72,11 @@ void ReportObject::slotFinished()
     severity = obj["severity"].toInt();
     description = obj["description"].toString();
     ioc = obj["iocs_v2"].toArray()[0].toObject()["values"].toArray()[0].toString();
-    // TODO : get tags...
     link = obj["link"].toString();
+
+    for (int i = 0; i < obj["tags"].toArray().size(); i++)
+    {
+        tags << obj["tags"].toArray()[i].toString();
+    }
 }
 
