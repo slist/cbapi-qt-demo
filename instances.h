@@ -18,7 +18,7 @@ public:
     explicit Instances(QWidget *parent = nullptr);
     ~Instances();
 
-    enum InstanceType { NgavInstanceType=2, EedrInstanceType, EdrInstanceType }; // TODO : remove =2
+    enum InstanceType { NgavInstanceType, EedrInstanceType, EdrInstanceType };
     Q_ENUM(InstanceType)
     void setInstanceType(InstanceType type);
 
