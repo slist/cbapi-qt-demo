@@ -14,37 +14,32 @@
 ## How to build on Linux CentOS
 
 ### Install required packages
-
+``` sh
 sudo yum install qt5-qtbase qt5-qtbase-devel vim-X11 gcc-c++ qt5-linguist
-
+```
 ### Use QT5 by default
-
+``` sh
 sudo ln -s /usr/bin/qmake-qt5 /usr/bin/qmake
-
 sudo ln -s /usr/bin/lrelease-qt5 /usr/bin/lrelease
- 
+``` 
 ### Build
-
+``` sh
 qmake-qt5
-
 make
-
 ./cb
-
+```
 ## How to build on Linux Ubuntu
 
 ### Install required packages
-
+``` sh
 sudo apt-get install g++ make qt5-default qt5-qmake
-
+```
 ### Build
-
+``` sh
 qmake-qt5
-
 make
-
 ./cb
-
+```
 ## Warning
 
 Warning : Settings/passwords are stored in plain text.
