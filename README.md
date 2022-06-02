@@ -45,6 +45,19 @@ make
 
 ./cb
 
+
+### Create a Destop Launcher on Ubuntu
+
+The easiest way to add this app to Ubuntu launcher is to create an entry in Gnome menu using alacarte, and then add it to favorites.
+
+sudo apt-get install alacarte
+
+alacarte
+
+Create a "new Item" and point to the App and Icon (img/qt-cbapi.png).
+
+Click on Top Left of your screen on "Activities", search your newly created application, right click to "Add to Favorites".
+
 ## Warning
 
 Warning : Settings/passwords are stored in plain text.
