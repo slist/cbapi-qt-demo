@@ -14,45 +14,41 @@
 ## How to build on Linux CentOS
 
 ### Install required packages
-
+``` sh
 sudo yum install qt5-qtbase qt5-qtbase-devel vim-X11 gcc-c++ qt5-linguist
-
+```
 ### Use QT5 by default
-
+``` sh
 sudo ln -s /usr/bin/qmake-qt5 /usr/bin/qmake
-
 sudo ln -s /usr/bin/lrelease-qt5 /usr/bin/lrelease
- 
+``` 
 ### Build
-
+``` sh
 qmake-qt5
-
 make
-
 ./cb
-
+```
 ## How to build on Linux Ubuntu
 
 ### Install required packages
-
+``` sh
 sudo apt-get install g++ make qt5-default qt5-qmake
-
+```
 ### Build
-
+``` sh
 qmake-qt5
-
 make
-
 ./cb
-
+``` 
 
 ### Create a Destop Launcher on Ubuntu
 
 The easiest way to add this app to Ubuntu launcher is to create an entry in Gnome menu using alacarte, and then add it to favorites.
 
+``` sh
 sudo apt-get install alacarte
-
 alacarte
+``` 
 
 Create a "new Item" and point to the App and Icon (img/qt-cbapi.png).
 
