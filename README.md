@@ -28,7 +28,24 @@ qmake-qt5
 make
 ./cb
 ```
-## How to build on Linux Ubuntu
+
+## How to build on Linux Ubuntu 22.04 LTS
+
+### Install required packages and source code
+``` sh
+sudo apt install -y qtcreator qtbase5-dev qt5-qmake cmake
+git clone https://github.com/slist/cbapi-qt-demo.git
+```
+
+### Build
+``` sh
+cd cbapi-qt-demo
+qmake
+make
+./cb
+``` 
+
+## How to build on Linux Ubuntu 20.04 LTS
 
 ### Install required packages
 ``` sh
