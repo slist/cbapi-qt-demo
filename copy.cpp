@@ -99,7 +99,7 @@ void Copy::send(void)
         data->append("{ \"policyInfo\": {                      \
                      \"description\": \"imported policy\",     \
                      \"name\": \"");
-        data->append(policy);
+        data->append(policy.toUtf8());
         data->append("\", \"policy\": ");
 
         QFile file(f);

@@ -198,8 +198,8 @@ void Ioc::slotFinished()
 
         Feedlist << feed;
         feed->description = obj["description"].toString();
-        feed->timestamp_create.setTime_t(obj["create_timestamp"].toInt());
-        feed->timestamp_last_update.setTime_t(obj["last_update_timestamp"].toInt());
+        feed->timestamp_create.setSecsSinceEpoch(obj["create_timestamp"].toInt());
+        feed->timestamp_last_update.setSecsSinceEpoch(obj["last_update_timestamp"].toInt());
         feed->server_url = server_url;
         feed->auth = auth;
         feed->org_key = org_key;

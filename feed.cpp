@@ -159,7 +159,7 @@ void Feed::slotFinished()
     foreach (const QJsonValue & value, jsonArray) {
         QJsonObject obj = value.toObject(); // obj = 1 report
         QDateTime timestamp;
-        timestamp.setTime_t(obj["timestamp"].toInt());
+        timestamp.setSecsSinceEpoch(obj["timestamp"].toInt());
 
         QJsonArray report_array = obj["iocs_v2"].toArray()[0].toObject()["values"].toArray();
         int report_array_size= report_array.size();

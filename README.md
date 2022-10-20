@@ -29,7 +29,7 @@ make
 ./cb
 ```
 
-## How to build on Linux Ubuntu 22.04 LTS
+## How to build on Linux Ubuntu 22.04 LTS (Qt5: recommended version)
 
 ### Install required packages and source code
 ``` sh
@@ -44,6 +44,22 @@ qmake
 make
 ./cb
 ``` 
+
+## How to build on Linux Ubuntu 22.04 LTS (Qt6: experimental)
+* Error handling in networking functions seems broken, but it will have no effect if there's no network error.
+
+### Install required packages
+``` sh
+sudo apt-get install g++ make qt6-tools-dev-tools assistant-qt6 linguist-qt6 designer-qt6 t6-base-dev qt6-base-dev-tools libqt6core5compat6 libqt6core5compat6-dev
+```
+
+### Build
+``` sh
+qmake6
+make
+./cb
+```
+
 
 ## How to build on Linux Ubuntu 20.04 LTS
 

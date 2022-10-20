@@ -1,8 +1,10 @@
 QT = core gui widgets network
-#requires(qtConfig(tableview))
-#CONFIG -= app
 
-lessThan(QT_MAJOR_VERSION, 5): error("requires Qt 5")
+lessThan(QT_MAJOR_VERSION, 5): error("requires Qt 5 minimum")
+
+greaterThan(QT_MAJOR_VERSION, 5) {
+    QT += core5compat
+}
 
 SOURCES += \
     banned.cpp \
@@ -89,3 +91,6 @@ RESOURCES += \
     cb.qrc
 
 TRANSLATIONS = cb_fr_FR.ts
+
+DISTFILES += \
+    README.md

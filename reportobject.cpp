@@ -68,7 +68,7 @@ void ReportObject::slotFinished()
 
     QJsonObject obj = json_doc.object();
     title = obj["title"].toString();
-    timestamp_last_update.setTime_t(obj["timestamp"].toInt());
+    timestamp_last_update.setSecsSinceEpoch(obj["timestamp"].toInt());
     severity = obj["severity"].toInt();
     description = obj["description"].toString();
     ioc = obj["iocs_v2"].toArray()[0].toObject()["values"].toArray()[0].toString();
