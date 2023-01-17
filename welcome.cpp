@@ -4,6 +4,9 @@
 #include "welcome.h"
 #include "ui_welcome.h"
 #include <QMessageBox>
+#include <QFile>
+#include <QTextStream>
+#include <QSettings>
 
 #include "version.h"
 
@@ -35,6 +38,8 @@ Welcome::Welcome(QWidget *parent) :
                            #endif
                                .arg(QSysInfo::prettyProductName())
                                );
+    QSettings settings;
+    ui->checkBox_DarkMode->setChecked(settings.value("DarkMode").toBool());
 }
 
 Welcome::~Welcome()
@@ -46,3 +51,39 @@ void Welcome::on_pushButton_aboutQt_clicked()
 {
     QMessageBox::aboutQt(this, "cb");
 }
+
+void Welcome::on_checkBox_DarkMode_stateChanged(int /* arg1*/)
+{
+    QSettings settings;
+
+    if (ui->checkBox_DarkMode->checkState() == Qt::Checked) {
+        qDebug("dark mode");
+        settings.setValue("DarkMode", true);
+
+        QFile f(":qdarkstyle/dark/darkstyle.qss");
+
+        if (!f.exists())   {
+            printf("Unable to set stylesheet, file not found\n");
+        }
+        else   {
+            f.open(QFile::ReadOnly | QFile::Text);
+            QTextStream ts(&f);
+            qApp->setStyleSheet(ts.readAll());
+        }
+    } else {
+        qDebug("light mode");
+        settings.setValue("DarkMode", false);
+
+        QFile f(":qdarkstyle/light/lightstyle.qss");
+
+        if (!f.exists())   {
+            printf("Unable to set stylesheet, file not found\n");
+        }
+        else   {
+            f.open(QFile::ReadOnly | QFile::Text);
+            QTextStream ts(&f);
+            qApp->setStyleSheet(ts.readAll());
+        }
+    }
+}
+

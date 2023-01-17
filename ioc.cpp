@@ -165,6 +165,8 @@ void Ioc::slotSslErrors(QList<QSslError> le)
 
 void Ioc::slotFinished()
 {
+    QSettings settings;
+
     // Convert received data from Latin1 to UTF8
     // In Latin1, 'é' character is \xE9
 
@@ -213,7 +215,12 @@ void Ioc::slotFinished()
         feed->feed_id = JsonObjectFeedId["value"].toString();
 
         if (feed->feed_id.isEmpty()) {
-            feed->setPixmap(QPixmap(":/img/watchlist.svg"));
+            QImage img(":/img/watchlist.png");;
+            if (settings.value("DarkMode").toBool()) {
+                img.invertPixels();
+            }
+            feed->setPixmap(QPixmap::fromImage(img));
+
             feed->isFeed = false;
             watchlist_count++;
             // get reports number
@@ -226,7 +233,11 @@ void Ioc::slotFinished()
             }
             feed->setReports(nreports);
         } else {
-            feed->setPixmap(QPixmap(":/img/feed.png"));
+            QImage img(":/img/feed.png");;
+            if (settings.value("DarkMode").toBool()) {
+                img.invertPixels();
+            }
+            feed->setPixmap(QPixmap::fromImage(img));
             feed->isFeed = true;
             feed_count++;
         }

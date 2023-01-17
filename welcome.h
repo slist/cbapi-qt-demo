@@ -21,6 +21,8 @@ public:
 private slots:
     void on_pushButton_aboutQt_clicked();
 
+    void on_checkBox_DarkMode_stateChanged(int);
+
 private:
     Ui::Welcome *ui;
 };
