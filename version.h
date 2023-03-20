@@ -4,9 +4,11 @@
 #ifndef VERSION_H
 #define VERSION_H
 
-#define VERSION "1.2"
+#define VERSION "1.4"
 
 /*
+ * 1.4 03/20/2023 Add AppControl server configuration
+ * 1.3 01/17/2023 Add Dark Mode
  * 1.2 11/25/2020 Create banned list from text files containing hashes, or from binraies
  * 1.1 09/02/2020 Fetch feeds and watchists from CBC
  * 1.0 07/31/2020 Merge Cloud/onprem softwares. Switch to Ubuntu 20.04. sudo apt-get install libclang-common-8-dev to fix qtcreator...

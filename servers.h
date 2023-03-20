@@ -1,4 +1,4 @@
-// Copyright 2020 VMware, Inc.
+// Copyright 2023 VMware, Inc.
 // SPDX-License-Identifier: MIT
 
 #ifndef SERVERS_H
@@ -27,6 +27,7 @@ private:
     QVBoxLayout * layout1;
     QVBoxLayout * layout2;
     QVBoxLayout * layout3;
+    QVBoxLayout * layout4;
     void load();
 };
 

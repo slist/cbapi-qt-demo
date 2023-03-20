@@ -1,4 +1,4 @@
-// Copyright 2020 VMware, Inc.
+// Copyright 2023 VMware, Inc.
 // SPDX-License-Identifier: MIT
 
 #ifndef INSTANCES_H
@@ -18,7 +18,7 @@ public:
     explicit Instances(QWidget *parent = nullptr);
     ~Instances();
 
-    enum InstanceType { NgavInstanceType, EedrInstanceType, EdrInstanceType };
+    enum InstanceType { NgavInstanceType, EedrInstanceType, EdrInstanceType, AppcontrolInstanceType };
     Q_ENUM(InstanceType)
     void setInstanceType(InstanceType type);
 

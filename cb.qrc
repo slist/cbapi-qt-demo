@@ -441,5 +441,8 @@
         <file>qdarkstyle/light/lightstyle.qss</file>
         <file>img/watchlist.png</file>
         <file>img/watchlist_dark.png</file>
+        <file>img/appcontrol.png</file>
+        <file>img/cbeedr.png</file>
+        <file>img/cb-endpoint.png</file>
     </qresource>
 </RCC>

@@ -32,7 +32,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="cb.qrc">:/img/cloud.png</pixmap>
+            <pixmap resource="cb.qrc">:/img/cb-endpoint.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -99,7 +99,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="cb.qrc">:/img/cloud.png</pixmap>
+            <pixmap resource="cb.qrc">:/img/cbeedr.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -239,6 +239,61 @@ onprem or hosted
        </item>
        <item>
         <widget class="QFrame" name="frame_edr">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="Line" name="line_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="maximumSize">
+            <size>
+             <width>55</width>
+             <height>55</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="cb.qrc">:/img/appcontrol.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="text">
+            <string>CB AppControl
+(was CB Protection, Bit9)</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_appcontrol">
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>

@@ -11,6 +11,7 @@ SOURCES += \
     droparea.cpp \
     edr.cpp \
     feed.cpp \
+    instanceappcontrol.cpp \
     instanceedr.cpp \
     ioc.cpp \
     ioclist.cpp \
@@ -39,6 +40,7 @@ FORMS += \
     banned.ui \
     edr.ui \
     feed.ui \
+    instanceappcontrol.ui \
     instanceedr.ui \
     ioc.ui \
     ioclist.ui \
@@ -63,6 +65,7 @@ HEADERS += \
     droparea.h \
     edr.h \
     feed.h \
+    instanceappcontrol.h \
     instanceedr.h \
     ioc.h \
     ioclist.h \
