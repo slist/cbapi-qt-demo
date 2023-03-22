@@ -57,7 +57,7 @@ void Welcome::on_checkBox_DarkMode_stateChanged(int /* arg1*/)
     QSettings settings;
 
     if (ui->checkBox_DarkMode->checkState() == Qt::Checked) {
-        qDebug("dark mode");
+        //qDebug("dark mode");
         settings.setValue("DarkMode", true);
 
         QFile f(":qdarkstyle/dark/darkstyle.qss");
@@ -71,7 +71,7 @@ void Welcome::on_checkBox_DarkMode_stateChanged(int /* arg1*/)
             qApp->setStyleSheet(ts.readAll());
         }
     } else {
-        qDebug("light mode");
+        //qDebug("light mode");
         settings.setValue("DarkMode", false);
 
         QFile f(":qdarkstyle/light/lightstyle.qss");
@@ -86,4 +86,3 @@ void Welcome::on_checkBox_DarkMode_stateChanged(int /* arg1*/)
         }
     }
 }
-

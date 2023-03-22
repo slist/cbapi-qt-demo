@@ -444,5 +444,6 @@
         <file>img/appcontrol.png</file>
         <file>img/cbeedr.png</file>
         <file>img/cb-endpoint.png</file>
+        <file>img/help.png</file>
     </qresource>
 </RCC>

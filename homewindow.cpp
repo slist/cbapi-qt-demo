@@ -12,6 +12,7 @@
 #include "servers.h"
 #include "iplist.h"
 #include "banned.h"
+#include <QShortcut>
 
 HomeWindow::HomeWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -20,6 +21,9 @@ HomeWindow::HomeWindow(QWidget *parent) :
     ui->setupUi(this);
     collapsed = false;
     on_pushButton_Welcome_clicked();
+
+    auto shortcut = new QShortcut(QKeySequence(Qt::Key_F11), this);
+    connect(shortcut, SIGNAL(activated()), this, SLOT(on_actionFullScreen_triggered()));
 }
 
 HomeWindow::~HomeWindow()
@@ -40,6 +44,21 @@ void HomeWindow::on_pushButton_Cloud_clicked()
     ui->frame->setLayout(layout);
 }
 
+
+void HomeWindow::on_pushButton_Appcontrol_clicked()
+{
+    reset_pushbuttons();
+    ui->pushButton_Appcontrol->setStyleSheet("text-align:left; border: 1px solid red;");
+    clear_frame();
+
+    //    auto *w = new Appcontrol(this);
+    auto layout = new QVBoxLayout();
+    //    layout->addWidget(w);
+
+    ui->frame->setLayout(layout);
+}
+
+
 void HomeWindow::on_pushButton_Edr_clicked()
 {
     reset_pushbuttons();
@@ -58,12 +77,15 @@ void HomeWindow::on_pushButton_Collapse_clicked()
     if (!collapsed) {
         menu_width = ui->frame_menu->width();
         ui->frame_menu->setMaximumWidth(86); // Icons width
-
         ui->pushButton_Collapse->setText(">>");
+        ui->label_CBC->setText("CB Cloud");
+        ui->label_OnPrem->setText("CB On Prem");
         collapsed = true;
     } else {
         ui->frame_menu->setMaximumWidth(menu_width);
         ui->pushButton_Collapse->setText("<< Collapse");
+        ui->label_CBC->setText("Carbon Black Cloud");
+        ui->label_OnPrem->setText("Carbon Black On Premise");
         collapsed = false;
     }
 }
@@ -128,6 +150,7 @@ void HomeWindow::reset_pushbuttons()
 {
     ui->pushButton_IOC->setStyleSheet("text-align:left;");
     ui->pushButton_Cloud->setStyleSheet("text-align:left;");
+    ui->pushButton_Appcontrol->setStyleSheet("text-align:left;");
     ui->pushButton_Edr->setStyleSheet("text-align:left;");
     ui->pushButton_Servers->setStyleSheet("text-align:left;");
     ui->pushButton_Welcome->setStyleSheet("text-align:left;");
@@ -172,4 +195,13 @@ void HomeWindow::on_pushButton_Banned_clicked()
     layout->addWidget(w);
 
     ui->frame->setLayout(layout);
+}
+
+void HomeWindow::on_actionFullScreen_triggered()
+{
+    if (isFullScreen()) {
+        showNormal();
+    } else {
+        showFullScreen();
+    }
 }

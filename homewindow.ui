@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1112</width>
-    <height>840</height>
+    <height>1000</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -53,6 +53,19 @@
         <number>0</number>
        </property>
        <item>
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
         <widget class="QPushButton" name="pushButton_Welcome">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -79,6 +92,43 @@
         </widget>
        </item>
        <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="Line" name="line_cbc_before">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_CBC">
+         <property name="text">
+          <string>Carbon Black Cloud</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_cbc_after">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="pushButton_Cloud">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -95,7 +145,7 @@
          </property>
          <property name="icon">
           <iconset resource="cb.qrc">
-           <normaloff>:/img/cloud.png</normaloff>:/img/cloud.png</iconset>
+           <normaloff>:/img/cb-endpoint.png</normaloff>:/img/cb-endpoint.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -112,31 +162,23 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_Edr">
+        <widget class="QPushButton" name="pushButton_Banned">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
          <property name="styleSheet">
           <string notr="true">text-align:left;
 </string>
          </property>
          <property name="text">
-          <string>   On Prem
-   or hosted
-   EDR</string>
+          <string>   Banned hash</string>
          </property>
          <property name="icon">
           <iconset resource="cb.qrc">
-           <normaloff>:/img/onprem.png</normaloff>:/img/onprem.png</iconset>
+           <normaloff>:/img/banned.png</normaloff>:/img/banned.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -164,7 +206,168 @@
          </property>
          <property name="icon">
           <iconset resource="cb.qrc">
-           <normaloff>:/img/search.png</normaloff>:/img/search.png</iconset>
+           <normaloff>:/img/cbeedr.png</normaloff>:/img/cbeedr.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>80</width>
+           <height>80</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="Line" name="line_onprem_before">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_OnPrem">
+         <property name="text">
+          <string>Carbon Black On Premise</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_onprem_after">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_Appcontrol">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">text-align:left;
+</string>
+         </property>
+         <property name="text">
+          <string>   App Control</string>
+         </property>
+         <property name="icon">
+          <iconset resource="cb.qrc">
+           <normaloff>:/img/appcontrol.png</normaloff>:/img/appcontrol.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>80</width>
+           <height>80</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_Edr">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">text-align:left;
+</string>
+         </property>
+         <property name="text">
+          <string>   EDR</string>
+         </property>
+         <property name="icon">
+          <iconset resource="cb.qrc">
+           <normaloff>:/img/onprem.png</normaloff>:/img/onprem.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>80</width>
+           <height>80</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="Line" name="line_settings_before">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_Settings">
+         <property name="text">
+          <string>Settings</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_settings_after">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_iplist">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">text-align:left;
+</string>
+         </property>
+         <property name="text">
+          <string>   DNS lookup</string>
+         </property>
+         <property name="icon">
+          <iconset resource="cb.qrc">
+           <normaloff>:/img/ip-list.png</normaloff>:/img/ip-list.png</iconset>
          </property>
          <property name="iconSize">
           <size>
@@ -208,60 +411,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_iplist">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">text-align:left;
-</string>
-         </property>
-         <property name="text">
-          <string>   DNS lookup</string>
-         </property>
-         <property name="icon">
-          <iconset resource="cb.qrc">
-           <normaloff>:/img/ip-list.png</normaloff>:/img/ip-list.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>80</width>
-           <height>80</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_Banned">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">text-align:left;
-</string>
-         </property>
-         <property name="text">
-          <string>   Banned hash</string>
-         </property>
-         <property name="icon">
-          <iconset resource="cb.qrc">
-           <normaloff>:/img/banned.png</normaloff>:/img/banned.png</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>80</width>
-           <height>80</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
         <spacer name="verticalSpacer">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -269,7 +418,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>308</height>
+           <height>40</height>
           </size>
          </property>
         </spacer>
@@ -309,6 +458,11 @@
     </item>
    </layout>
   </widget>
+  <action name="actionFullScreen">
+   <property name="text">
+    <string>FullScreen</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="cb.qrc"/>
