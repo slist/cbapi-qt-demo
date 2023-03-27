@@ -28,11 +28,8 @@ private slots:
     void on_pushButton_Welcome_clicked();
     void on_pushButton_Servers_clicked();
     void on_pushButton_iplist_clicked();
-
     void on_pushButton_Banned_clicked();
-
     void on_actionFullScreen_triggered();
-
     void on_pushButton_Appcontrol_clicked();
 
 private:

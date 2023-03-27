@@ -22,8 +22,11 @@ HomeWindow::HomeWindow(QWidget *parent) :
     collapsed = false;
     on_pushButton_Welcome_clicked();
 
-    auto shortcut = new QShortcut(QKeySequence(Qt::Key_F11), this);
-    connect(shortcut, SIGNAL(activated()), this, SLOT(on_actionFullScreen_triggered()));
+    auto shortcutF11 = new QShortcut(QKeySequence(Qt::Key_F11), this);
+    connect(shortcutF11, SIGNAL(activated()), this, SLOT(on_actionFullScreen_triggered()));
+
+    auto shortcutESC = new QShortcut(QKeySequence(Qt::Key_Escape), this);
+    connect(shortcutESC, SIGNAL(activated()), this, SLOT(showNormal()));
 }
 
 HomeWindow::~HomeWindow()

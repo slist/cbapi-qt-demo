@@ -16,9 +16,9 @@ Welcome::Welcome(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->label_version->setText(tr("By Stéphane List <a href=\"mailto:slist@vmware.com\">&lt;slist@vmware.com&gt;</a>"
-                                  "<p>Version cb: %1"
-                                  "<p>Version %2: %3.%4"
-                                  "<p>OS version: %5"
+                                  "<p>cbapi-qt-demo version: %1"
+                                  "<p>%2 version: %3.%4"
+                                  "<p>OS: %5"
                                   "<p>License: MIT"
 
                                   "</p>")
