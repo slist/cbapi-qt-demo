@@ -15,7 +15,7 @@
 
 ### Install required packages
 ``` sh
-sudo yum install qt5-qtbase qt5-qtbase-devel vim-X11 gcc-c++ qt5-linguist
+sudo yum install qt5-qtbase qt5-qtbase-devel vim-X11 gcc-c++ qt5-linguist git
 ```
 ### Use QT5 by default
 ``` sh
@@ -33,7 +33,7 @@ make
 
 ### Install required packages and source code
 ``` sh
-sudo apt install -y qtcreator qtbase5-dev qt5-qmake cmake
+sudo apt install -y qtcreator qtbase5-dev qt5-qmake cmake git
 git clone https://github.com/slist/cbapi-qt-demo.git
 ```
 
@@ -50,7 +50,7 @@ make
 
 ### Install required packages
 ``` sh
-sudo apt-get install g++ make qt6-tools-dev-tools assistant-qt6 linguist-qt6 designer-qt6 qt6-base-dev qt6-base-dev-tools libqt6core5compat6 libqt6core5compat6-dev
+sudo apt-get install g++ make qt6-tools-dev-tools assistant-qt6 linguist-qt6 designer-qt6 qt6-base-dev qt6-base-dev-tools libqt6core5compat6 libqt6core5compat6-dev git
 ```
 
 ### Build
@@ -65,7 +65,7 @@ make -j4
 
 ### Install required packages
 ``` sh
-sudo apt-get install g++ make qt5-default qt5-qmake
+sudo apt-get install g++ make qt5-default qt5-qmake git
 ```
 ### Build
 ``` sh
