@@ -91,9 +91,9 @@ HEADERS += \
     welcome.h
 
 RESOURCES += \
-    cb.qrc
+    cbapi-qt-demo.qrc
 
-TRANSLATIONS = cb_fr_FR.ts
+TRANSLATIONS = cbapi-qt-demo_fr_FR.ts
 
 DISTFILES += \
     README.md
