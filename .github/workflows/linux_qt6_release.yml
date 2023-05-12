@@ -48,32 +48,4 @@ jobs:
         run:  |
               qmake -r ${{ env.SOURCE_DIR }}/cbapi-qt-demo.pro
               make -j`nproc`
-              
-
-      - name: AppImage v1
-        uses: AppImageCrafters/build-appimage-action@master
-        env:
-          UPDATE_INFO: gh-releases-zsync|AppImageCrafters|cbapi-qt-demo|latest|*x86_64.AppImage.zsync
-        with:
-          recipe: AppImageBuilder.yml
-
-      - name: AppImage v2
-        working-directory: ${{ env.SOURCE_DIR }}/build
-        run: |
-          wget -O deploy.AppImage https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage
-          chmod +x deploy.AppImage
-          export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:${{ github.workspace }}/Qt/5.15.2/gcc_64/lib/
-          cp ${{ env.SOURCE_DIR }}/linux/* .
-          sudo apt-get install libfuse2
-          sudo modprobe -v fuse
-          sudo addgroup fuse
-          sudo adduser $USER fuse
-          ./deploy.AppImage cbapi-qt-demo.desktop -appimage -no-translations -qmldir=${{ env.SOURCE_DIR }} -extra-plugins=renderers
-          mv *.AppImage ${{ env.ARTIFACT }}          
-      
-      - name: Linux artefact
-        uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.ARTIFACT }}
-          path: ${{ env.SOURCE_DIR }}/build/${{ env.ARTIFACT }}
 
