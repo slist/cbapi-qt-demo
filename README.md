@@ -10,6 +10,10 @@
 
 * Policies that are applied can then be viewed in the product UI under Enforce > Policies 
 
+## For Microsoft Windows users
+
+Zip files containing cbapi-qt-demo.exe are available in "Releases" section, on the right of the main page for this project.
+
 
 ## How to build on Linux CentOS
 
@@ -26,7 +30,7 @@ sudo ln -s /usr/bin/lrelease-qt5 /usr/bin/lrelease
 ``` sh
 qmake-qt5
 make
-./cb
+./cbapi-qt-demo
 ```
 
 ## How to build on Linux Ubuntu 22.04 LTS or 22.10 (Qt5: recommended version)
@@ -42,7 +46,7 @@ git clone https://github.com/slist/cbapi-qt-demo.git
 cd cbapi-qt-demo
 qmake
 make
-./cb
+./cbapi-qt-demo
 ``` 
 
 ## How to build on Linux Ubuntu 22.04 LTS or 22.10 (Qt6: experimental)
@@ -57,7 +61,7 @@ sudo apt-get install g++ make qt6-tools-dev-tools assistant-qt6 linguist-qt6 des
 ``` sh
 qmake6
 make -j4
-./cb
+./cbapi-qt-demo
 ```
 
 
@@ -71,7 +75,7 @@ sudo apt-get install g++ make qt5-default qt5-qmake git
 ``` sh
 qmake-qt5
 make
-./cb
+./cbapi-qt-demo
 ``` 
 
 ### Create a Destop Launcher on Ubuntu
