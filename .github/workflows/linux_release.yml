@@ -49,7 +49,7 @@ jobs:
       - name: Build
         working-directory: ${{ env.SOURCE_DIR }}/build
         run:  |
-              qmake -r ${{ env.SOURCE_DIR }}/cb.pro
+              qmake -r ${{ env.SOURCE_DIR }}/cbapi-qt-demo.pro
               make -j2
               
       - name: AppImage
