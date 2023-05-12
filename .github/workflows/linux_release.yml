@@ -19,12 +19,12 @@ defaults:
 
 env:
   SOURCE_DIR:   ${{ github.workspace }}
-  QT_VERSION:   5.15.2
+  QT_VERSION:   5.15.3
   ARTIFACT:     cbapi-qt-demo-linux-build.AppImage
 
 jobs:
   build:
-    runs-on:  ubuntu-18.04
+    runs-on:  ubuntu-20.04
 
     steps:
       - name: Checkout repo
@@ -50,7 +50,7 @@ jobs:
         working-directory: ${{ env.SOURCE_DIR }}/build
         run:  |
               qmake -r ${{ env.SOURCE_DIR }}/cb.pro
-              make
+              make -j2
               
       - name: AppImage
         working-directory: ${{ env.SOURCE_DIR }}/build
