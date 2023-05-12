@@ -1,17 +1,14 @@
-name: Linux Release
+name: Linux Qt5 Release
 
 on:
   push:
     branches:
       - 'master'
-      - 'continuous-integration'
-      - 'cross-platform'
     tags:
       - 'v*'
   pull_request:
     branches:
     - 'master'
-    - 'continuous-integration'
 
 defaults:
   run:
