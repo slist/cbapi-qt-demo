@@ -47,7 +47,7 @@ jobs:
           #          setup-python: false
 
       - name: Download JOM
-        uses: suisei-cn/actions-download-file@v1
+        uses: suisei-cn/actions-download-file@v1.3.0
         with:
           url:    http://download.qt.io/official_releases/jom/jom.zip
           target: ${{ runner.temp }}\
