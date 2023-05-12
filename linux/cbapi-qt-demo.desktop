@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=cbapi-qt-demo
+Comment=Qt CB API Qt demo
+Exec=cbapi-qt-demo
+Icon=cbapi-qt-demo.png
+Categories=Office;
