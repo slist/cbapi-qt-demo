@@ -38,6 +38,7 @@ jobs:
         with:
           version:      ${{ env.QT_VERSION }}
           dir:          ${{ runner.temp }}
+          modules: 'qt5compat'
           setup-python: false
 
       - name: Download JOM
