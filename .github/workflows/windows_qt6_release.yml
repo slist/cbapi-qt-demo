@@ -1,16 +1,14 @@
-name: Windows Release
+name: Windows Qt6 Release
 
 on:
   push:
     branches:
       - 'master'
-      - 'continuous-integration'
     tags:
       - 'v*'
   pull_request:
     branches:
     - 'master'
-    - 'continuous-integration'
 
 defaults:
   run:
@@ -18,7 +16,7 @@ defaults:
 
 env:
   SOURCE_DIR:   ${{ github.workspace }}
-  QT_VERSION:   5.15.2
+  QT_VERSION:   6.5
   ARTIFACT:     cbapi-qt-demo.zip
 
 jobs:
@@ -36,15 +34,11 @@ jobs:
         run: |
           git fetch --all --tags -f
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
-          #        with:
-          #          version:      ${{ env.QT_VERSION }}
-          #          host:         windows
-          #          target:       desktop
-          #          arch:         win64_msvc2019_64
-          #          dir:          ${{ runner.temp }}
-          #          modules:      qtcharts qt3d
-          #          setup-python: false
+        uses: jurplel/install-qt-action@v3.2.0
+        with:
+          version:      ${{ env.QT_VERSION }}
+          dir:          ${{ runner.temp }}
+          setup-python: false
 
       - name: Download JOM
         uses: suisei-cn/actions-download-file@v1.3.0
