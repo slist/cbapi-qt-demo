@@ -16,7 +16,7 @@ defaults:
 
 env:
   SOURCE_DIR:   ${{ github.workspace }}
-  QT_VERSION:   6.5
+  QT_VERSION:   6.5.0
   ARTIFACT:     cbapi-qt-demo.zip
 
 jobs:
