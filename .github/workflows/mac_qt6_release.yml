@@ -1,0 +1,52 @@
+name: MacOS Qt6 Release
+
+on:
+  push:
+    branches:
+      - 'master'
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+    - 'master'
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  SOURCE_DIR:   ${{ github.workspace }}
+  QT_VERSION:   6.5.0
+  ARTIFACT:     cbapi-qt-demo-linux-build.AppImage
+
+jobs:
+  build:
+    runs-on:  macos-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+            #      - name: Install dependencies
+            #        run: |
+            #          sudo apt-get update
+            #          sudo apt-get install -y qt5-default
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3.2.0
+        with:
+          version:      ${{ env.QT_VERSION }}
+          modules: 'qt5compat'
+          setup-python: false
+              
+      - name: Create build directory
+        run:  mkdir ${{ env.SOURCE_DIR }}/build
+
+      - name: Build
+        working-directory: ${{ env.SOURCE_DIR }}/build
+        run:  |
+              qmake -r ${{ env.SOURCE_DIR }}/cbapi-qt-demo.pro
+              make -j`nproc`
+
