@@ -17,7 +17,7 @@ defaults:
 env:
   SOURCE_DIR:   ${{ github.workspace }}
   QT_VERSION:   6.5.0
-  ARTIFACT:     cbapi-qt-demo-linux-build.AppImage
+  ARTIFACT:     cbapi-qt-demo.dmg
 
 jobs:
   build:
@@ -53,10 +53,10 @@ jobs:
       - name: Package
         working-directory: ${{ env.SOURCE_DIR }}/build
         run:  |
-              ls -lrt
-              find . 
+              #ls -lrt
+              #find . 
               macdeployqt cbapi-qt-demo.app -dmg
-              find .
+              #find .
               find . |grep dmg
 
               #otool -L QtGui.framework/QtGui
@@ -67,5 +67,9 @@ jobs:
               # cp -R .../QtCore.framework cbapi-qt-demo.app/Contents/Frameworks
               # cp -R .../QtGui.framework cbapi-qt-demo.app/Contents/Frameworks
 
-
-
+      - name: Save build artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: ${{ env.ARTIFACT }}
+          path: ${{ runner.temp }}\${{ env.ARTIFACT }}
+ 
