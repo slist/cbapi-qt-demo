@@ -37,7 +37,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3.2.0
         with:
-          version:      ${{ env.QT_VERSION }}
+          version: ${{ env.QT_VERSION }}
           modules: 'qt5compat'
           setup-python: false
               
@@ -47,7 +47,7 @@ jobs:
       - name: Build
         working-directory: ${{ env.SOURCE_DIR }}/build
         run:  |
-              qmake -r ${{ env.SOURCE_DIR }}/cbapi-qt-demo.pro
+              qmake -r ${{ env.SOURCE_DIR }}/cbapi-qt-demo.pro -config release
               make -j 3
 
       - name: Package
@@ -71,5 +71,5 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: ${{ env.ARTIFACT }}
-          path: ${{ runner.temp }}\${{ env.ARTIFACT }}
+          path: ${{ env.SOURCE_DIR }}/build/${{ env.ARTIFACT }}
  
