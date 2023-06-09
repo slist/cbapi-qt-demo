@@ -50,6 +50,30 @@ jobs:
               qmake -r ${{ env.SOURCE_DIR }}/cbapi-qt-demo.pro -config release
               make -j 3
 
+      - name: Create icons for MacOS
+        working-directory: ${{ env.SOURCE_DIR }}
+        run:  |
+              input_filepath="img/qt-cbapi_1024.png"
+              output_iconset_name="icon.iconset"
+              mkdir $output_iconset_name
+              sips -z 16 16     $input_filepath --out "${output_iconset_name}/icon_16x16.png"
+              sips -z 32 32     $input_filepath --out "${output_iconset_name}/icon_16x16@2x.png"
+              sips -z 32 32     $input_filepath --out "${output_iconset_name}/icon_32x32.png"
+              sips -z 64 64     $input_filepath --out "${output_iconset_name}/icon_32x32@2x.png"
+              sips -z 128 128   $input_filepath --out "${output_iconset_name}/icon_128x128.png"
+              sips -z 256 256   $input_filepath --out "${output_iconset_name}/icon_128x128@2x.png"
+              sips -z 256 256   $input_filepath --out "${output_iconset_name}/icon_256x256.png"
+              sips -z 512 512   $input_filepath --out "${output_iconset_name}/icon_256x256@2x.png"
+              sips -z 512 512   $input_filepath --out "${output_iconset_name}/icon_512x512.png"
+              cp                $input_filepath       "${output_iconset_name}/icon_1024x1024.png"
+              iconutil -c icns $output_iconset_name
+              echo "ls des icons de toutes les tailles"
+              ls $output_iconset_name
+              echo "ls du icns tant attendu"
+              ls -lrt
+
+
+
       - name: Package
         working-directory: ${{ env.SOURCE_DIR }}/build
         run:  |
@@ -66,6 +90,8 @@ jobs:
               
               # cp -R .../QtCore.framework cbapi-qt-demo.app/Contents/Frameworks
               # cp -R .../QtGui.framework cbapi-qt-demo.app/Contents/Frameworks
+
+
 
       - name: Save build artifact
         uses: actions/upload-artifact@master
