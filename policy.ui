@@ -138,7 +138,7 @@ ON OFF</string>
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="cb.qrc">
+      <iconset resource="cbapi-qt-demo.qrc">
        <normaloff>:/img/cloud.png</normaloff>:/img/cloud.png</iconset>
      </property>
      <property name="iconSize">
@@ -152,7 +152,7 @@ ON OFF</string>
   </layout>
  </widget>
  <resources>
-  <include location="cb.qrc"/>
+  <include location="cbapi-qt-demo.qrc"/>
  </resources>
  <connections/>
 </ui>

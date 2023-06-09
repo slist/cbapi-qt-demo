@@ -32,7 +32,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="cb.qrc">:/img/cb-endpoint.png</pixmap>
+            <pixmap resource="cbapi-qt-demo.qrc">:/img/cb-endpoint.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -99,7 +99,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="cb.qrc">:/img/cbeedr.png</pixmap>
+            <pixmap resource="cbapi-qt-demo.qrc">:/img/cbeedr.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -118,7 +118,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="cb.qrc">:/img/search.png</pixmap>
+            <pixmap resource="cbapi-qt-demo.qrc">:/img/search.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -185,7 +185,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="cb.qrc">:/img/onprem.png</pixmap>
+            <pixmap resource="cbapi-qt-demo.qrc">:/img/onprem.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -204,7 +204,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="cb.qrc">:/img/search.png</pixmap>
+            <pixmap resource="cbapi-qt-demo.qrc">:/img/search.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -272,7 +272,7 @@ onprem or hosted
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="cb.qrc">:/img/appcontrol.png</pixmap>
+            <pixmap resource="cbapi-qt-demo.qrc">:/img/appcontrol.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -327,7 +327,7 @@ onprem or hosted
         <string>Cancel</string>
        </property>
        <property name="icon">
-        <iconset resource="cb.qrc">
+        <iconset resource="cbapi-qt-demo.qrc">
          <normaloff>:/img/cancel.png</normaloff>:/img/cancel.png</iconset>
        </property>
       </widget>
@@ -351,7 +351,7 @@ onprem or hosted
         <string>Save</string>
        </property>
        <property name="icon">
-        <iconset resource="cb.qrc">
+        <iconset resource="cbapi-qt-demo.qrc">
          <normaloff>:/img/save.png</normaloff>:/img/save.png</iconset>
        </property>
       </widget>
@@ -374,7 +374,7 @@ onprem or hosted
   </layout>
  </widget>
  <resources>
-  <include location="cb.qrc"/>
+  <include location="cbapi-qt-demo.qrc"/>
  </resources>
  <connections/>
 </ui>

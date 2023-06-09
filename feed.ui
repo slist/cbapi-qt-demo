@@ -40,7 +40,7 @@
         <string/>
        </property>
        <property name="pixmap">
-	       <pixmap>:/img/cb.jpeg</pixmap>
+        <pixmap resource="cbapi-qt-demo.qrc">:/img/cb.jpeg</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -129,7 +129,7 @@ XXX</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="cb.qrc">
+        <iconset resource="cbapi-qt-demo.qrc">
          <normaloff>:/img/download.png</normaloff>:/img/download.png</iconset>
        </property>
        <property name="iconSize">
@@ -152,7 +152,7 @@ XXX</string>
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="cb.qrc">
+        <iconset resource="cbapi-qt-demo.qrc">
          <normaloff>:/img/json.png</normaloff>:/img/json.png</iconset>
        </property>
        <property name="iconSize">
@@ -233,7 +233,7 @@ XX/XX/XXXX</string>
   </layout>
  </widget>
  <resources>
-  <include location="cb.qrc"/>
+  <include location="cbapi-qt-demo.qrc"/>
  </resources>
  <connections/>
 </ui>

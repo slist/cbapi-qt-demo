@@ -14,7 +14,7 @@
    <string>Qt VMware Carbon Black API demo</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="cb.qrc">
+   <iconset resource="cbapi-qt-demo.qrc">
     <normaloff>:/img/qt-cbapi.png</normaloff>:/img/qt-cbapi.png</iconset>
   </property>
   <property name="autoFillBackground">
@@ -80,7 +80,7 @@
           <string>   Welcome</string>
          </property>
          <property name="icon">
-          <iconset resource="cb.qrc">
+          <iconset resource="cbapi-qt-demo.qrc">
            <normaloff>:/img/qt-cbapi.png</normaloff>:/img/qt-cbapi.png</iconset>
          </property>
          <property name="iconSize">
@@ -150,7 +150,7 @@
           <string>   NGAV policy</string>
          </property>
          <property name="icon">
-          <iconset resource="cb.qrc">
+          <iconset resource="cbapi-qt-demo.qrc">
            <normaloff>:/img/cb-endpoint.png</normaloff>:/img/cb-endpoint.png</iconset>
          </property>
          <property name="iconSize">
@@ -183,7 +183,7 @@
           <string>   Banned hash</string>
          </property>
          <property name="icon">
-          <iconset resource="cb.qrc">
+          <iconset resource="cbapi-qt-demo.qrc">
            <normaloff>:/img/banned.png</normaloff>:/img/banned.png</iconset>
          </property>
          <property name="iconSize">
@@ -211,7 +211,7 @@
    Compromise</string>
          </property>
          <property name="icon">
-          <iconset resource="cb.qrc">
+          <iconset resource="cbapi-qt-demo.qrc">
            <normaloff>:/img/cbeedr.png</normaloff>:/img/cbeedr.png</iconset>
          </property>
          <property name="iconSize">
@@ -281,7 +281,7 @@
           <string>   App Control</string>
          </property>
          <property name="icon">
-          <iconset resource="cb.qrc">
+          <iconset resource="cbapi-qt-demo.qrc">
            <normaloff>:/img/appcontrol.png</normaloff>:/img/appcontrol.png</iconset>
          </property>
          <property name="iconSize">
@@ -314,7 +314,7 @@
           <string>   EDR</string>
          </property>
          <property name="icon">
-          <iconset resource="cb.qrc">
+          <iconset resource="cbapi-qt-demo.qrc">
            <normaloff>:/img/onprem.png</normaloff>:/img/onprem.png</iconset>
          </property>
          <property name="iconSize">
@@ -384,7 +384,7 @@
           <string>   DNS lookup</string>
          </property>
          <property name="icon">
-          <iconset resource="cb.qrc">
+          <iconset resource="cbapi-qt-demo.qrc">
            <normaloff>:/img/ip-list.png</normaloff>:/img/ip-list.png</iconset>
          </property>
          <property name="iconSize">
@@ -417,7 +417,7 @@
           <string>   Servers</string>
          </property>
          <property name="icon">
-          <iconset resource="cb.qrc">
+          <iconset resource="cbapi-qt-demo.qrc">
            <normaloff>:/img/tools.png</normaloff>:/img/tools.png</iconset>
          </property>
          <property name="iconSize">
@@ -483,7 +483,7 @@
   </action>
  </widget>
  <resources>
-  <include location="cb.qrc"/>
+  <include location="cbapi-qt-demo.qrc"/>
  </resources>
  <connections/>
 </ui>
