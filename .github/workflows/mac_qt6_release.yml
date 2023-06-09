@@ -50,3 +50,16 @@ jobs:
               qmake -r ${{ env.SOURCE_DIR }}/cbapi-qt-demo.pro
               make -j 3
 
+      - name: Package
+        working-directory: ${{ env.SOURCE_DIR }}/build
+        run:  |
+              ls -lrt
+              find .
+              macdeployqt
+              otool -L QtGui.framework/QtGui
+              mkdir cbapi-qt-demo.app/Contents/Frameworks
+              # cp -R .../QtCore.framework cbapi-qt-demo.app/Contents/Frameworks
+              # cp -R .../QtGui.framework cbapi-qt-demo.app/Contents/Frameworks
+
+
+
