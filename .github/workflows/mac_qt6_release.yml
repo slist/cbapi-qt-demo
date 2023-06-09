@@ -54,10 +54,16 @@ jobs:
         working-directory: ${{ env.SOURCE_DIR }}/build
         run:  |
               ls -lrt
+              find . 
+              macdeployqt cbapi-qt-demo.app -dmg
               find .
-              macdeployqt
-              otool -L QtGui.framework/QtGui
-              mkdir cbapi-qt-demo.app/Contents/Frameworks
+              find . |grep dmg
+
+              #otool -L QtGui.framework/QtGui
+              
+              #no need already there option CONFIG +=app_bundle is added automaticaly by qmake on Mac
+              #mkdir cbapi-qt-demo.app/Contents/Frameworks
+              
               # cp -R .../QtCore.framework cbapi-qt-demo.app/Contents/Frameworks
               # cp -R .../QtGui.framework cbapi-qt-demo.app/Contents/Frameworks
 
