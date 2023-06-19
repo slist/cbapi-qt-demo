@@ -39,12 +39,6 @@ jobs:
       - name: Create build directory
         run:  mkdir ${{ env.SOURCE_DIR }}/build
 
-      - name: Build
-        working-directory: ${{ env.SOURCE_DIR }}/build
-        run:  |
-              qmake -r ${{ env.SOURCE_DIR }}/cbapi-qt-demo.pro -config release
-              make -j 3
-
       - name: Create icons for MacOS
         working-directory: ${{ env.SOURCE_DIR }}
         run:  |
@@ -68,13 +62,18 @@ jobs:
               echo -e "\n---\nls *.icns\n---\n"
               ls *.icns
 
+      - name: Build
+        working-directory: ${{ env.SOURCE_DIR }}/build
+        run:  |
+              qmake -r ${{ env.SOURCE_DIR }}/cbapi-qt-demo.pro -config release
+              make -j 3
+      
       - name: Create DMG Package
         working-directory: ${{ env.SOURCE_DIR }}/build
         run:  |
               macdeployqt cbapi-qt-demo.app -dmg
               echo -e "\n---\nls *.dmg\n---\n"
               ls *.dmg
-
 
       - name: Save build artifact
         uses: actions/upload-artifact@master

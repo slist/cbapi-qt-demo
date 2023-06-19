@@ -29,11 +29,6 @@ jobs:
         with:
           submodules: recursive
 
-            #      - name: Install dependencies
-            #        run: |
-            #          sudo apt-get update
-            #          sudo apt-get install -y qt5-default
-
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
