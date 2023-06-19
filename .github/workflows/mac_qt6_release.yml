@@ -29,11 +29,6 @@ jobs:
         with:
           submodules: recursive
 
-            #      - name: Install dependencies
-            #        run: |
-            #          sudo apt-get update
-            #          sudo apt-get install -y qt5-default
-
       - name: Install Qt
         uses: jurplel/install-qt-action@v3.2.0
         with:
@@ -67,30 +62,18 @@ jobs:
               sips -z 512 512   $input_filepath --out "${output_iconset_name}/icon_512x512.png"
               cp                $input_filepath       "${output_iconset_name}/icon_1024x1024.png"
               iconutil -c icns $output_iconset_name
-              echo "ls des icons de toutes les tailles"
-              ls $output_iconset_name
-              echo "ls du icns tant attendu"
-              ls -lrt
+              echo -e "\n---\nls icons directory: ${output_iconset_name}\n---\n"
+              ls ${output_iconset_name}
+              mv icon.icns cbapi-qt-demo.icns 
+              echo -e "\n---\nls *.icns\n---\n"
+              ls *.icns
 
-
-
-      - name: Package
+      - name: Create DMG Package
         working-directory: ${{ env.SOURCE_DIR }}/build
         run:  |
-              #ls -lrt
-              #find . 
               macdeployqt cbapi-qt-demo.app -dmg
-              #find .
-              find . |grep dmg
-
-              #otool -L QtGui.framework/QtGui
-              
-              #no need already there option CONFIG +=app_bundle is added automaticaly by qmake on Mac
-              #mkdir cbapi-qt-demo.app/Contents/Frameworks
-              
-              # cp -R .../QtCore.framework cbapi-qt-demo.app/Contents/Frameworks
-              # cp -R .../QtGui.framework cbapi-qt-demo.app/Contents/Frameworks
-
+              echo -e "\n---\nls *.dmg\n---\n"
+              ls *.dmg
 
 
       - name: Save build artifact

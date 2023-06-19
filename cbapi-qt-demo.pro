@@ -99,3 +99,6 @@ TRANSLATIONS = cbapi-qt-demo_fr_FR.ts
 
 DISTFILES += \
     README.md
+
+#Icon for Mac OS
+ICON = cbapi-qt-demo.icns
