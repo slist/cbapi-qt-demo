@@ -65,7 +65,7 @@ jobs:
       - name: Build
         working-directory: ${{ env.SOURCE_DIR }}/build
         run:  |
-              qmake -r ${{ env.SOURCE_DIR }}/cbapi-qt-demo.pro -config release
+              qmake -r ${{ env.SOURCE_DIR }}/cbapi-qt-demo.pro -config debug
               make -j 3
       
       - name: Create DMG Package

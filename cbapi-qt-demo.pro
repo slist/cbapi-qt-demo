@@ -6,7 +6,7 @@ greaterThan(QT_MAJOR_VERSION, 5) {
     QT += core5compat
 }
 
-DEFINES += QT_NO_DEBUG_OUTPUT
+#DEFINES += QT_NO_DEBUG_OUTPUT
 
 SOURCES += \
     banned.cpp \
