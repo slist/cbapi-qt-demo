@@ -1,13 +1,15 @@
-// Copyright 2020 VMware, Inc.
+// Copyright 2020-2023 VMware, Inc.
 // SPDX-License-Identifier: MIT
-
-#include "copy.h"
-#include "ui_copy.h"
 
 #include <QDebug>
 #include <QSettings>
 #include <QStandardPaths>
 #include <QFile>
+#include <QJsonParseError>
+#include <QJsonObject>
+
+#include "copy.h"
+#include "ui_copy.h"
 
 Copy::Copy(QWidget *parent) :
     QDialog(parent),
@@ -43,84 +45,92 @@ void Copy::add_pol(const QString & a, const QString & b)
     nb_policy_to_copy++;
 }
 
-/*
- * See https://developer.carbonblack.com/reference/carbon-black-cloud/cb-defense/latest/rest-api/
- *
- * $ curl -X POST -H X-Auth-Token:ABCD/1234 -H Content-Type:application/json \
- *         https://api-url.conferdeploy.net/integrationServices/v3/policy -d @policy.txt
- *
- */
-
 void Copy::send(void)
 {
-    QString dest_name, dest_api_id, dest_api_secret, dest_server;
-    // Get dest info
-    dest_name = ui->comboBox_instances->currentText();
-    //qDebug() << "dest_name : " << dest_name;
+    QString dest_api_id, dest_api_secret, dest_server, dest_org_key;
+    QString dest_instance_name(ui->comboBox_instances->currentText());
 
-    // Retrieve API ID and API SECRET
+    qDebug() << "nb_policy_to_copy:" << nb_policy_to_copy;
+    qDebug() << "dest_name : " << dest_instance_name;
+
+    // Retrieve API ID/SECRET and Org_key
     QSettings settings;
     int size = settings.beginReadArray("instances");
     for (int i = 0; i < size; ++i) {
         settings.setArrayIndex(i);
-        if (settings.value("name").toString() == dest_name) {
+        if (settings.value("name").toString() == dest_instance_name) {
             dest_api_id = settings.value("api_id").toString();
             dest_api_secret = settings.value("api_secret").toString();
             dest_server = settings.value("server").toString();
+            dest_org_key = settings.value("org_key").toString();
+            break;
         }
     }
     settings.endArray();
 
     QString auth = dest_api_secret + "/" + dest_api_id;
 
-    // Remove text after SPACE in server name
+    // Remove text after SPACE in server name, for example : "prod06 (Europe)"
     int i = dest_server.indexOf(" ");
     if (i > 0) {
         dest_server.truncate(i);
     }
 
-    QString url("https://api-" + dest_server + ".conferdeploy.net/integrationServices/v3/policy");
+    QString url("https://api-" + dest_server + ".conferdeploy.net/policyservice/v1/orgs/" + dest_org_key + "/policies");
+
+    qDebug() << "Dest URL:" << url;
 
     for (int row=0; row < ui->tableWidget_selection->rowCount(); row++) {
         QString src_inst = ui->tableWidget_selection->item(row, 0)->text();
         QString policy = ui->tableWidget_selection->item(row, 1)->text(); // policy is src and dest
 
-        QString f;
-        f += QStandardPaths::writableLocation(QStandardPaths::TempLocation);
-        f += QString("/%1_%2.txt").arg(src_inst).arg(policy);
+        QString policy_filename;
+        policy_filename += QStandardPaths::writableLocation(QStandardPaths::TempLocation);
+        policy_filename += QString("/%1_%2.json").arg(src_inst).arg(policy);
+
+        qDebug() << "Copy policy: " << policy_filename;
 
         QNetworkAccessManager * manager = new QNetworkAccessManager(this);
         QNetworkRequest * request = new QNetworkRequest(QUrl(url));
         request->setRawHeader("X-Auth-Token", auth.toLocal8Bit());
         request->setRawHeader("Content-Type", "application/json");
 
-        QByteArray * data = new QByteArray("");
-
-        data->append("{ \"policyInfo\": {                      \
-                     \"description\": \"imported policy\",     \
-                     \"name\": \"");
-        data->append(policy.toUtf8());
-        data->append("\", \"policy\": ");
-
-        QFile file(f);
-        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        QFile policy_file(policy_filename);
+        if (!policy_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            manager->deleteLater();
             return;
-
-        // Remove first line
-        QByteArray esc = file.readLine();
-        if (esc.isEmpty()) {
-            qDebug() << "First line should not be empty : " << f;
         }
+        QByteArray * policy_data = new QByteArray(policy_file.readAll());
+        policy_file.close();
 
-        while (!file.atEnd()) {
-            data->append(file.readLine());
+        /* Before sending policy to the dest:
+         * - remove policy ID
+         * - set dest org_key in policy
+         * - remove rule_configs (API not ready : https://developer.carbonblack.com/reference/carbon-black-cloud/platform/latest/policy-service/#policy )
+         */
+
+        QJsonParseError error;
+        QJsonDocument json_doc = QJsonDocument::fromJson(*policy_data, &error);
+        if (json_doc.isNull()) {
+            qDebug("Failed parse JSON");
+            manager->deleteLater();
+            return;
         }
-
-        data->append(", \"priorityLevel\": \"LOW\", \"version\": 2 }}");
+        if (!json_doc.isObject()) {
+            qDebug("JSON is not an object.");
+            manager->deleteLater();
+            return;
+        }
+        QJsonObject root = json_doc.object();
+        root.remove("id");
+        root.insert("org_key", QJsonValue(dest_org_key));
+        root.remove("rule_configs"); // avoid Feature flags error ..
+        json_doc = QJsonDocument(root);
+        *policy_data = json_doc.toJson();
 
         connect(manager,SIGNAL(finished(QNetworkReply*)),manager,SLOT(deleteLater()));
         connect(manager,SIGNAL(finished(QNetworkReply*)),this,SLOT(copy_finished(QNetworkReply*)));
-        manager->post(*request, *data);
+        manager->post(*request, *policy_data);
     }
 }
 
@@ -132,11 +142,13 @@ void Copy::on_pushButton_copy_clicked()
 void Copy::copy_finished(QNetworkReply* reply)
 {
     nb_policy_to_copy--;
+    qDebug() << "nb_policy_to_copy:" << nb_policy_to_copy;
 
     QString res(reply->readAll());
 
-    if (!res.contains("Success")) {
+    if (res.startsWith("{\"error_code")) {
         qDebug() << res;
+        emit log("Error during copy:" + res);
     }
 
     if (nb_policy_to_copy == 0) {
@@ -146,5 +158,5 @@ void Copy::copy_finished(QNetworkReply* reply)
 
 void Copy::on_pushButton_cancel_clicked()
 {
-     this->deleteLater();
+    this->deleteLater();
 }

@@ -1,4 +1,4 @@
-// Copyright 2020 VMware, Inc.
+// Copyright 2020-2023 VMware, Inc.
 // SPDX-License-Identifier: MIT
 
 #ifndef POLICIES_H
@@ -16,7 +16,7 @@ class Policies : public QListWidget
 public:
     Policies(QWidget *parent = nullptr);
     ~Policies() {}
-    void set_instance(const QString & name, const QString & id, const QString & secret, const QString & server);
+    void set_instance(const QString & name, const QString & id, const QString & secret, const QString & org_key, const QString & server);
     void download_policies();
 
 private:
@@ -27,9 +27,8 @@ private:
     QString name;
     QString api_id;
     QString api_secret;
+    QString org_key;
     QString server;
-
-    QByteArray policies;
 
 private slots:
     void slotError(QNetworkReply::NetworkError);

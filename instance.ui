@@ -22,7 +22,7 @@
         <bool>true</bool>
        </property>
        <property name="text">
-        <string>Customer Name:</string>
+        <string>Instance Name:</string>
        </property>
       </widget>
      </item>
@@ -36,7 +36,7 @@
      <item row="1" column="0">
       <widget class="QLabel" name="clientIdLabel">
        <property name="text">
-        <string>API &amp;ID:</string>
+        <string>API ID:</string>
        </property>
        <property name="buddy">
         <cstring>customer_name_LineEdit</cstring>
@@ -49,7 +49,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="clientSecretLabel">
        <property name="text">
-        <string>API  &amp;Secret Key:</string>
+        <string>API Secret Key:</string>
        </property>
        <property name="buddy">
         <cstring>api_id_LineEdit</cstring>
@@ -115,9 +115,19 @@
          <string>prodnrt (Japan)</string>
         </property>
        </item>
-        <item>
+       <item>
         <property name="text">
          <string>prodsyd (Australia)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>prodUK (Not supported)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>AWS GovCloud US (Not supported)</string>
         </property>
        </item>
       </widget>

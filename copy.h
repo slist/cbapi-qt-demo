@@ -1,4 +1,4 @@
-// Copyright 2020 VMware, Inc.
+// Copyright 2020-2023 VMware, Inc.
 // SPDX-License-Identifier: MIT
 
 #ifndef COPY_H
@@ -33,6 +33,9 @@ private slots:
     void on_pushButton_copy_clicked();
     void copy_finished(QNetworkReply *);
     void on_pushButton_cancel_clicked();
+
+signals:
+    void log(const QString &);
 };
 
 #endif // COPY_H

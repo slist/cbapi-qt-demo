@@ -78,9 +78,7 @@ void Instance::set_org_key(const QString & s)
 
 bool Instance::isValid()
 {
-    if ((instanceType == Instances::NgavInstanceType) && ((get_name().isEmpty() || get_api_id().isEmpty() || get_api_secret().isEmpty())))
-        return false;
-    if ((instanceType == Instances::EedrInstanceType) && ((get_name().isEmpty() || get_api_id().isEmpty() || get_api_secret().isEmpty() || get_org_key().isEmpty())))
+    if ((get_name().isEmpty() || get_api_id().isEmpty() || get_api_secret().isEmpty() || get_org_key().isEmpty()))
         return false;
     return true;
 }
@@ -120,8 +118,8 @@ void Instance::setInstanceType(Instances::InstanceType type)
 
     switch(type) {
     case Instances::NgavInstanceType:
-        ui->org_label->hide();
-        ui->org_key_LineEdit->hide();
+//        ui->org_label->hide();
+//        ui->org_key_LineEdit->hide();
         break;
     case Instances::EedrInstanceType:
         break;

@@ -1,3 +1,6 @@
+// Copyright 2020-2023 VMware, Inc.
+// SPDX-License-Identifier: MIT
+
 #ifndef FEED_H
 #define FEED_H
 

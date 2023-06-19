@@ -1,3 +1,6 @@
+// Copyright 2020-2023 VMware, Inc.
+// SPDX-License-Identifier: MIT
+
 #ifndef NGAV_H
 #define NGAV_H
 
@@ -20,7 +23,7 @@ public:
 private slots:
     void on_pushButton_connect_clicked();
     void on_pushButton_compare_clicked();
-    void on_checkBox_stateChanged(int arg1);
+    void on_checkBox_show_logs_stateChanged(int arg1);
     void on_pushButton_unselect_clicked();
     void on_pushButton_copy_clicked();
     void on_pushButton_difftool_clicked();

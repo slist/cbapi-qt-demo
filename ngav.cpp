@@ -12,17 +12,17 @@
 #include <QStandardPaths>
 
 #include "difftool.h"
-#include "instances.h"
 #include "copy.h"
 #include "policies.h"
 
-const int max_inst_display = 3;
+const int max_inst_display = 2;
 
 Ngav::Ngav(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Ngav)
 {
     ui->setupUi(this);
+    ui->checkBox_show_logs->setVisible(false);
     start();
 }
 
@@ -40,9 +40,9 @@ void Ngav::on_pushButton_connect_clicked()
     emit refresh();
 }
 
-void Ngav::on_checkBox_stateChanged(int arg1)
+void Ngav::on_checkBox_show_logs_stateChanged(int checked)
 {
-    if (arg1) {
+    if (checked) {
         ui->logTextEdit->setVisible(true);
     } else {
         ui->logTextEdit->setVisible(false);
@@ -51,7 +51,8 @@ void Ngav::on_checkBox_stateChanged(int arg1)
 
 void Ngav::log(const QString & text)
 {
-    ui->checkBox->setChecked(true);
+    ui->checkBox_show_logs->setVisible(true);
+    ui->checkBox_show_logs->setChecked(true);
     ui->logTextEdit->append(text);
 }
 
@@ -62,7 +63,8 @@ void Ngav::on_pushButton_compare_clicked()
     QString program(settings.value("diff_tool","").toString());
 
     if (QFile(program).exists() == false) {
-        ui->checkBox->setChecked(true);
+        ui->checkBox_show_logs->setVisible(true);
+        ui->checkBox_show_logs->setChecked(true);
         ui->logTextEdit->append(tr("Please set a diff tool"));
         return;
     }
@@ -73,7 +75,7 @@ void Ngav::on_pushButton_compare_clicked()
     {
         QString f;
         f += QStandardPaths::writableLocation(QStandardPaths::TempLocation);
-        f += QString("/%1_%2.txt").arg(ui->tableWidget_selection->item(row, 0)->text()).arg(ui->tableWidget_selection->item(row, 1)->text());
+        f += QString("/%1_%2.json").arg(ui->tableWidget_selection->item(row, 0)->text()).arg(ui->tableWidget_selection->item(row, 1)->text());
         arguments << f;
     }
     myProcess->start(program, arguments);
@@ -210,17 +212,19 @@ void Ngav::clear()
 void Ngav::on_pushButton_copy_clicked()
 {
     //int res;
-    Copy *cop = new Copy(this);
-    cop->setModal(true);
-    cop->set_inst_list(inst_list);
+    Copy *copy_window = new Copy(this);
+
+    connect (copy_window, SIGNAL(log(const QString &)), this, SLOT(log(const QString &)));
+    copy_window->setModal(true);
+    copy_window->set_inst_list(inst_list);
 
     QStringList arguments;
     for (int row=0; row < ui->tableWidget_selection->rowCount(); row++)
     {
-        cop->add_pol(ui->tableWidget_selection->item(row, 0)->text(), ui->tableWidget_selection->item(row, 1)->text());
+        copy_window->add_pol(ui->tableWidget_selection->item(row, 0)->text(), ui->tableWidget_selection->item(row, 1)->text());
     }
 
-    /* res = */ cop->exec();
+    /* res = */ copy_window->exec();
     on_pushButton_connect_clicked();
 }
 

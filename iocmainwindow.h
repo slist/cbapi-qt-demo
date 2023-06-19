@@ -1,11 +1,10 @@
-// Copyright 2020 VMware, Inc.
+// Copyright 2020-2023 VMware, Inc.
 // SPDX-License-Identifier: MIT
 
 #ifndef IOCMAINWINDOW_H
 #define IOCMAINWINDOW_H
 
 #include <QMainWindow>
-
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 

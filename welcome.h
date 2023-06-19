@@ -1,4 +1,4 @@
-// Copyright 2020 VMware, Inc.
+// Copyright 2020-2023 VMware, Inc.
 // SPDX-License-Identifier: MIT
 
 #ifndef WELCOME_H
@@ -20,7 +20,6 @@ public:
 
 private slots:
     void on_pushButton_aboutQt_clicked();
-
     void on_checkBox_DarkMode_stateChanged(int);
 
 private:

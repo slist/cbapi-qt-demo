@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>338</width>
+    <width>361</width>
     <height>97</height>
    </rect>
   </property>
@@ -39,7 +39,6 @@
        <property name="font">
         <font>
          <pointsize>13</pointsize>
-         <weight>75</weight>
          <bold>true</bold>
         </font>
        </property>
@@ -85,10 +84,10 @@ XXX</string>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_log">
+        <widget class="QLabel" name="label_num_devices">
          <property name="text">
-          <string>SENSOR
-LOG</string>
+          <string>Devices:
+XXX</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>

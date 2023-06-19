@@ -1,6 +1,7 @@
-// Copyright 2020 VMware, Inc.
+// Copyright 2020-2023 VMware, Inc.
 // SPDX-License-Identifier: MIT
 
+#include <QtDebug>
 #include <QSettings>
 
 #include "instance.h"
@@ -14,7 +15,6 @@ Instances::Instances(QWidget *parent) :
     ui(new Ui::Instances)
 {
     ui->setupUi(this);
-
     ui->listWidget->setDragDropMode(QAbstractItemView::InternalMove);
 }
 
@@ -83,9 +83,11 @@ void Instances::on_save()
 
             if ((inst) && (inst->isValid())) {
                 settings.setArrayIndex(count_valid++);
+                qDebug() << "Saved Endpoint Standard instance: " << inst->get_name();
                 settings.setValue("name", inst->get_name());
                 settings.setValue("api_id", inst->get_api_id());
                 settings.setValue("api_secret", inst->get_api_secret());
+                settings.setValue("org_key", inst->get_org_key());
                 settings.setValue("server", inst->get_server_display_name());
             }
         }
@@ -179,6 +181,7 @@ void Instances::setInstanceType(InstanceType type)
 
             Instance *inst = new Instance(this);
             inst->setInstanceType(type);
+            qDebug() << "Loaded Endpoint Standard instance: " << settings.value("name").toString();
             inst->set_name(settings.value("name").toString());
             inst->set_api_id(settings.value("api_id").toString());
             inst->set_api_secret(settings.value("api_secret").toString());

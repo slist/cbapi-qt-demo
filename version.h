@@ -1,12 +1,13 @@
-// Copyright 2020 VMware, Inc.
+// Copyright 2020-2023 VMware, Inc.
 // SPDX-License-Identifier: MIT
 
 #ifndef VERSION_H
 #define VERSION_H
 
-#define VERSION "1.4"
+#define VERSION "1.5"
 
 /*
+ * 1.5 06/19/2023 Use new policy API v1
  * 1.4 03/20/2023 Add AppControl server configuration
  * 1.3 01/17/2023 Add Dark Mode
  * 1.2 11/25/2020 Create banned list from text files containing hashes, or from binraies
