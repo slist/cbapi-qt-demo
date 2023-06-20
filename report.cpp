@@ -45,8 +45,8 @@ void Report::on_pushButton_json_view_clicked()
         return;
     }
 
-    QTreeView * view   = new QTreeView;
-    QJsonModel * model = new QJsonModel;
+    QTreeView * view   = new QTreeView();
+    QJsonModel * model = new QJsonModel();
 
     view->setModel(model);
 

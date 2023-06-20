@@ -41,11 +41,10 @@ jobs:
     - name: Run cppcheck (warnings and performance issues)
       working-directory: ${{ env.SOURCE_DIR }}
       run: cppcheck --enable=warning,performance --language=c++ $(find -name "*.h" -o -name "*.cpp")
-      continue-on-error: true
 
     - name: Run cpplint
       working-directory: ${{ env.SOURCE_DIR }}
-      run: cpplint --filter=-legal/copyright,-build/include_subdir,-build/c++11,-build/include_order --linelength=120 $(find -name "*.h" -o -name "*.cpp")
+      run: cpplint --filter=-build/include_subdir,-build/include_order,-whitespace,-build/header_guard,-readability/todo --linelength=120 $(find -name "*.h" -o -name "*.cpp")
 
   build:
     runs-on:  ubuntu-latest

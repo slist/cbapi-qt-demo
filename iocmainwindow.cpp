@@ -39,18 +39,18 @@ IocMainWindow::~IocMainWindow()
 
 QStringList IocMainWindow::get_instances_list()
 {
-    QStringList list;
+    QStringList inst_list;
     QSettings settings;
 
     int size = settings.beginReadArray("instances");
     for (int i = 0; i < size; ++i) {
         settings.setArrayIndex(i);
         if (!settings.value("org_key").toString().isEmpty()) {
-            list << settings.value("name").toString();
+            inst_list << settings.value("name").toString();
         }
     }
     settings.endArray();
-    return list;
+    return inst_list;
 }
 
 void IocMainWindow::slotError(QNetworkReply::NetworkError)
@@ -89,7 +89,8 @@ void IocMainWindow::slotFinished()
     }
 }
 
-void IocMainWindow::on_comboBox_currentIndexChanged(int /* index */)
+void IocMainWindow::on_comboBox_currentIndexChanged(int i)
 {
-    // refresh(); TOOD !
+    qDebug() << "TODO, change index" << i;
+    // refresh(); TODO !
 }

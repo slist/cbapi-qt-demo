@@ -14,7 +14,7 @@ class IocSyntaxHighlighter : public QSyntaxHighlighter
     Q_OBJECT
 
 public:
-    IocSyntaxHighlighter(QTextDocument *parent = 0);
+    explicit IocSyntaxHighlighter(QTextDocument *parent = 0);
     void highlightSearch(const QString & text);
 
 protected:

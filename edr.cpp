@@ -37,16 +37,16 @@ Edr::Edr(QWidget *parent) :
 
 QStringList Edr::get_instances_list_edr()
 {
-    QStringList list;
+    QStringList inst_list;
     QSettings settings;
 
     int size = settings.beginReadArray("instances_edr");
     for (int i = 0; i < size; ++i) {
         settings.setArrayIndex(i);
-        list << settings.value("name").toString();
+        inst_list << settings.value("name").toString();
     }
     settings.endArray();
-    return list;
+    return inst_list;
 }
 
 Edr::~Edr()

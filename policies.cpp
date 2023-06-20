@@ -18,6 +18,7 @@ Policies::Policies(QWidget *parent) :
     QListWidget (parent),
     manager(new QNetworkAccessManager(this))
 {
+    reply = NULL;
 }
 
 void Policies::set_instance(const QString & n, const QString & id, const QString & secret, const QString & o, const QString & s)
@@ -105,11 +106,11 @@ void Policies::slotFinished()
 
     QJsonDocument json_doc = QJsonDocument::fromJson(policies, e);
     if (json_doc.isNull()) {
-        emit log("Failed parse JSON");
+        emit log(tr("Failed parse JSON"));
         return;
     }
     if (!json_doc.isObject()) {
-        emit log("JSON is not an object.");
+        emit log(tr("JSON is not an object."));
         return;
     }
 

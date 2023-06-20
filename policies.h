@@ -14,15 +14,18 @@ class Policies : public QListWidget
     Q_OBJECT
 
 public:
-    Policies(QWidget *parent = nullptr);
+    explicit Policies(QWidget *parent = nullptr);
     ~Policies() {}
-    void set_instance(const QString & name, const QString & id, const QString & secret, const QString & org_key, const QString & server);
+    void set_instance(const QString & name,
+                      const QString & id,
+                      const QString & secret,
+                      const QString & org_key,
+                      const QString & server);
     void download_policies();
 
 private:
     QNetworkAccessManager *manager;
     QNetworkReply *reply;
-    bool network_error;
 
     QString name;
     QString api_id;

@@ -36,18 +36,6 @@ QString Instance::get_org_key()
     return ui->org_key_LineEdit->text();
 }
 
-QString Instance::get_server()
-{
-    QString server(ui->env_comboBox->currentText());
-
-    // Remove text after SPACE in server name
-    int i = server.indexOf(" ");
-    if (i > 0) {
-        server.truncate(i);
-    }
-    return server;
-}
-
 QString Instance::get_server_display_name()
 {
     return ui->env_comboBox->currentText();

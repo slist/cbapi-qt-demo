@@ -21,7 +21,6 @@ public:
     QString get_name();
     QString get_api_id();
     QString get_api_secret();
-    QString get_server();
     QString get_org_key();
     QString get_server_display_name();
     bool isValid();

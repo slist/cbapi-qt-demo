@@ -38,7 +38,7 @@ private slots:
 private:
     QNetworkAccessManager *manager;
     QNetworkReply *reply;
-    bool network_error;
+    //bool network_error;
 };
 
 #endif // REPORTOBJECT_H

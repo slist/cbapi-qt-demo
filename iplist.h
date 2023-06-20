@@ -24,7 +24,7 @@ private slots:
     void on_pushButton_lookup_clicked();
     void lookUp();
     void lookedUp(const QHostInfo &host);
-    void on_comboBox_region_currentIndexChanged(int index);
+    void on_comboBox_region_currentIndexChanged(int i);
     void on_pushButton_add_clicked();
 
 private:

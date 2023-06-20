@@ -101,7 +101,7 @@ void IpList::lookedUp(const QHostInfo &host)
     settings.setValue(ui->comboBox_region->currentText() + "_iplist", ipList);
 }
 
-void IpList::on_comboBox_region_currentIndexChanged(int /* index */)
+void IpList::on_comboBox_region_currentIndexChanged(int i)
 {
     int count = 0;
     QSettings settings;

@@ -13,7 +13,7 @@
 ReportObject::ReportObject(QObject *parent) : QObject(parent),
     manager(new QNetworkAccessManager(this))
 {
-
+    reply = NULL;
 }
 
 void ReportObject::fetch_report()

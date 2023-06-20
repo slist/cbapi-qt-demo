@@ -50,16 +50,16 @@ Ioc::~Ioc()
 
 QStringList Ioc::get_instances_list(const QString & inst_type)
 {
-    QStringList list;
+    QStringList inst_list;
     QSettings settings;
 
     int size = settings.beginReadArray(inst_type);
     for (int i = 0; i < size; ++i) {
         settings.setArrayIndex(i);
-        list << settings.value("name").toString();
+        inst_list << settings.value("name").toString();
     }
     settings.endArray();
-    return list;
+    return inst_list;
 }
 
 void Ioc::refresh()
@@ -297,8 +297,9 @@ void Ioc::slotFinished()
     reply->deleteLater();
 }
 
-void Ioc::on_comboBox_server_currentIndexChanged(int /* index */)
+void Ioc::on_comboBox_server_currentIndexChanged(int i)
 {
+    qDebug() << "New server:" << i;
     if (default_server != -1) {
         refresh();
     }

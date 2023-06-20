@@ -241,20 +241,6 @@ QVariant QJsonModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
-bool QJsonModel::setData(const QModelIndex &index, const QVariant &value, int role)
-{
-    int col = index.column();
-    if (Qt::EditRole == role) {
-        if (col == 1) {
-            QJsonTreeItem *item = static_cast<QJsonTreeItem*>(index.internalPointer());
-            item->setValue(value.toString());
-            emit dataChanged(index, index, {Qt::EditRole});
-            return true;
-        }
-    }
-    return false;
-}
-
 QVariant QJsonModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if (role != Qt::DisplayRole)
@@ -315,6 +301,7 @@ int QJsonModel::rowCount(const QModelIndex &parent) const
     return parentItem->childCount();
 }
 
+// not used but mandatory
 int QJsonModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)

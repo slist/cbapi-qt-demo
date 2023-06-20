@@ -4,7 +4,6 @@
 #include <QRegExp>
 
 #include "iocsyntaxhighlighter.h"
-#include <QRegExp>
 
 IocSyntaxHighlighter::IocSyntaxHighlighter(QTextDocument *parent)
     : QSyntaxHighlighter(parent)
