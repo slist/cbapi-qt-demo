@@ -1,8 +1,8 @@
 // Copyright 2020-2023 VMware, Inc.
 // SPDX-License-Identifier: MIT
 
-#ifndef WELCOME_H
-#define WELCOME_H
+#ifndef WELCOME_H_
+#define WELCOME_H_
 
 #include <QWidget>
 
@@ -10,20 +10,19 @@ namespace Ui {
 class Welcome;
 }
 
-class Welcome : public QWidget
-{
+class Welcome : public QWidget {
     Q_OBJECT
 
-public:
+ public:
     explicit Welcome(QWidget *parent = nullptr);
     ~Welcome();
 
-private slots:
+ private slots:
     void on_pushButton_aboutQt_clicked();
     void on_checkBox_DarkMode_stateChanged(int);
 
-private:
+ private:
     Ui::Welcome *ui;
 };
 
-#endif // WELCOME_H
+#endif  // WELCOME_H_

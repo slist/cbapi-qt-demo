@@ -11,9 +11,7 @@
 #include "version.h"
 
 Welcome::Welcome(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::Welcome)
-{
+    QWidget(parent), ui(new Ui::Welcome) {
     ui->setupUi(this);
     ui->label_version->setText(tr("By Stéphane List <a href=\"mailto:slist@vmware.com\">&lt;slist@vmware.com&gt;</a>"
                                   "<p>cbapi-qt-demo version: %1"
@@ -30,56 +28,50 @@ Welcome::Welcome(QWidget *parent) :
                            #elif defined(_MSC_VER)
                                .arg("VC++")
                                .arg(_MSC_VER / 100)
-                               .arg(_MSC_VER % 100,2,10,QChar('0'))
+                               .arg(_MSC_VER % 100, 2, 10, QChar('0'))
                            #else
                                .arg("Compiler")
                                .arg("?")
                                .arg("?")
                            #endif
-                               .arg(QSysInfo::prettyProductName())
-                               );
+                               .arg(QSysInfo::prettyProductName()));
     QSettings settings;
     ui->checkBox_DarkMode->setChecked(settings.value("DarkMode").toBool());
 }
 
-Welcome::~Welcome()
-{
+Welcome::~Welcome() {
     delete ui;
 }
 
-void Welcome::on_pushButton_aboutQt_clicked()
-{
+void Welcome::on_pushButton_aboutQt_clicked() {
     QMessageBox::aboutQt(this, "cb");
 }
 
-void Welcome::on_checkBox_DarkMode_stateChanged(int /* arg1*/)
-{
+void Welcome::on_checkBox_DarkMode_stateChanged(int /* arg1*/) {
     QSettings settings;
 
     if (ui->checkBox_DarkMode->checkState() == Qt::Checked) {
-        //qDebug("dark mode");
+        qDebug("dark mode");
         settings.setValue("DarkMode", true);
 
         QFile f(":qdarkstyle/dark/darkstyle.qss");
 
-        if (!f.exists())   {
+        if (!f.exists()) {
             printf("Unable to set stylesheet, file not found\n");
-        }
-        else   {
+        } else {
             f.open(QFile::ReadOnly | QFile::Text);
             QTextStream ts(&f);
             qApp->setStyleSheet(ts.readAll());
         }
     } else {
-        //qDebug("light mode");
+        qDebug("light mode");
         settings.setValue("DarkMode", false);
 
         QFile f(":qdarkstyle/light/lightstyle.qss");
 
         if (!f.exists())   {
             printf("Unable to set stylesheet, file not found\n");
-        }
-        else   {
+        } else {
             f.open(QFile::ReadOnly | QFile::Text);
             QTextStream ts(&f);
             qApp->setStyleSheet(ts.readAll());

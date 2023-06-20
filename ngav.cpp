@@ -1,8 +1,5 @@
-// Copyright 2020 VMware, Inc.
+// Copyright 2020-2023 VMware, Inc.
 // SPDX-License-Identifier: MIT
-
-#include "ngav.h"
-#include "ui_ngav.h"
 
 #include <QSettings>
 #include <QMessageBox>
@@ -10,6 +7,9 @@
 #include <QProcess>
 #include <QComboBox>
 #include <QStandardPaths>
+
+#include "ngav.h"
+#include "ui_ngav.h"
 
 #include "difftool.h"
 #include "copy.h"
@@ -60,7 +60,7 @@ void Ngav::on_pushButton_compare_clicked()
 {
     QSettings settings;
 
-    QString program(settings.value("diff_tool","").toString());
+    QString program(settings.value("diff_tool", "").toString());
 
     if (QFile(program).exists() == false) {
         ui->checkBox_show_logs->setVisible(true);
@@ -75,7 +75,9 @@ void Ngav::on_pushButton_compare_clicked()
     {
         QString f;
         f += QStandardPaths::writableLocation(QStandardPaths::TempLocation);
-        f += QString("/%1_%2.json").arg(ui->tableWidget_selection->item(row, 0)->text()).arg(ui->tableWidget_selection->item(row, 1)->text());
+        f += QString("/%1_%2.json")
+                .arg(ui->tableWidget_selection->item(row, 0)->text())
+                .arg(ui->tableWidget_selection->item(row, 1)->text());
         arguments << f;
     }
     myProcess->start(program, arguments);
@@ -83,16 +85,16 @@ void Ngav::on_pushButton_compare_clicked()
 
 QStringList Ngav::get_instances_list()
 {
-    QStringList list;
+    QStringList inst_list;
 
     QSettings settings;
     int size = settings.beginReadArray("instances");
     for (int i = 0; i < size; ++i) {
         settings.setArrayIndex(i);
-        list << settings.value("name").toString();
+        inst_list << settings.value("name").toString();
     }
     settings.endArray();
-    return list;
+    return inst_list;
 }
 
 void Ngav::add_pol(const QString & a, const QString & b)
@@ -100,7 +102,7 @@ void Ngav::add_pol(const QString & a, const QString & b)
     int row = ui->tableWidget_selection->rowCount() + 1;
     ui->tableWidget_selection->setRowCount(row--);
 
-    QTableWidgetItem *newItem_inst= new QTableWidgetItem(a);
+    QTableWidgetItem *newItem_inst = new QTableWidgetItem(a);
     QTableWidgetItem *newItem_pol = new QTableWidgetItem(b);
     ui->tableWidget_selection->setItem(row, 0, newItem_inst);
     ui->tableWidget_selection->setItem(row, 1, newItem_pol);
@@ -111,8 +113,9 @@ void Ngav::add_pol(const QString & a, const QString & b)
 
 void Ngav::del_pol(const QString & a, const QString & b)
 {
-    for (int i=0;i < ui->tableWidget_selection->rowCount(); i++) {
-        if ((a == ui->tableWidget_selection->item(i,0)->text()) && (b == ui->tableWidget_selection->item(i,1)->text())) {
+    for (int i = 0; i < ui->tableWidget_selection->rowCount(); i++) {
+        if ((a == ui->tableWidget_selection->item(i, 0)->text())
+                && (b == ui->tableWidget_selection->item(i, 1)->text())) {
             ui->tableWidget_selection->removeRow(i);
             updateButtons();
             return;
@@ -167,7 +170,7 @@ void Ngav::start()
     int n = qMin(inst_list.size(), max_inst_display);
 
     // Create n instances !
-    for (int i=0; i<n; i++)
+    for (int i=0; i < n; i++)
     {
         QVBoxLayout *layout = new QVBoxLayout();
         QComboBox * qcb = new QComboBox(this);
@@ -176,7 +179,7 @@ void Ngav::start()
         Widgets.append(qcb);
         Widgets.append(pol);
 
-        for (int inst=0; inst<inst_list.size(); inst++) {
+        for (int inst=0; inst < inst_list.size(); inst++) {
             qcb->addItem(inst_list[inst]);
         }
         qcb->setCurrentIndex(i);
@@ -185,11 +188,14 @@ void Ngav::start()
         ui->horizontalLayout_policies->addLayout(layout);
 
         // connect combobox to policies...
-        connect(qcb, SIGNAL(currentTextChanged(const QString &)), pol, SLOT(set_instance_name(const QString &)));
+        connect(qcb, SIGNAL(currentTextChanged(const QString &)),
+                pol, SLOT(set_instance_name(const QString &)));
 
         // connect policies to Ngav
-        connect(pol, SIGNAL(pol_selected(const QString &, const QString &)), this, SLOT(add_pol(const QString &, const QString &)));
-        connect(pol, SIGNAL(pol_deselected(const QString &, const QString &)), this, SLOT(del_pol(const QString &, const QString &)));
+        connect(pol, SIGNAL(pol_selected(const QString &, const QString &)),
+                this, SLOT(add_pol(const QString &, const QString &)));
+        connect(pol, SIGNAL(pol_deselected(const QString &, const QString &)),
+                this, SLOT(del_pol(const QString &, const QString &)));
         connect(pol, SIGNAL(log(const QString &)), this, SLOT(log(const QString &)));
 
         // connect Ngav to policies
@@ -211,20 +217,20 @@ void Ngav::clear()
 
 void Ngav::on_pushButton_copy_clicked()
 {
-    //int res;
     Copy *copy_window = new Copy(this);
 
-    connect (copy_window, SIGNAL(log(const QString &)), this, SLOT(log(const QString &)));
+    connect(copy_window, SIGNAL(log(const QString &)), this, SLOT(log(const QString &)));
     copy_window->setModal(true);
     copy_window->set_inst_list(inst_list);
 
     QStringList arguments;
     for (int row=0; row < ui->tableWidget_selection->rowCount(); row++)
     {
-        copy_window->add_pol(ui->tableWidget_selection->item(row, 0)->text(), ui->tableWidget_selection->item(row, 1)->text());
+        copy_window->add_pol(ui->tableWidget_selection->item(row, 0)->text(),
+                             ui->tableWidget_selection->item(row, 1)->text());
     }
 
-    /* res = */ copy_window->exec();
+    copy_window->exec();
     on_pushButton_connect_clicked();
 }
 

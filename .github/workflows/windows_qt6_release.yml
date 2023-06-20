@@ -72,10 +72,17 @@ jobs:
               copy C:\Windows\System32\msvcp140.dll .
               copy C:\Windows\System32\vcruntime140.dll .
               
+      - name: Clean up
+        working-directory: ${{ runner.temp }}\build\release
+        run:  |
+              del *.obj
+              del moc_*
+              del *.cpp
+              
       - name: Zip build
         working-directory: ${{ runner.temp }}
         run:  |
-              7z a cbapi-qt-demo.zip ${{ runner.temp }}\build\* -r
+              7z a cbapi-qt-demo.zip ${{ runner.temp }}\build\release\* -r
               
       - name: Save build artifact
         uses: actions/upload-artifact@master

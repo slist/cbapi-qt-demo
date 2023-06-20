@@ -51,9 +51,13 @@ DiffTool::DiffTool(QWidget *parent) :
         ui->plainTextEdit->appendPlainText(tr("For example kdiff3, WinMerge...\n\n"));
         ui->plainTextEdit->appendPlainText(tr("C:\\Program Files\\KDiff3\\kdiff3.exe\n"));
         ui->plainTextEdit->appendPlainText(tr("C:\\Program Files (x86)\\WinMerge\\WinMergeU.exe\n"));
-    } else {
+    } else if (os.contains("macOS", Qt::CaseInsensitive)) {
         ui->plainTextEdit->appendPlainText(tr("Select a graphical diff tool"));
-        ui->plainTextEdit->appendPlainText(tr("For example gvimdiff"));
+        ui->plainTextEdit->appendHtml(tr("For example Meld --&gt; /Applications/Meld.app/Contents/MacOS/Meld"));
+        ui->plainTextEdit->appendHtml(tr("From here: <a href=\"https://yousseb.github.io/meld/\">Meld for OSX</a>"));
+    } else {
+        ui->plainTextEdit->appendPlainText(tr("Select a graphical diff tool,"));
+        ui->plainTextEdit->appendPlainText(tr("for example Meld"));
     }
 }
 
