@@ -1,5 +1,14 @@
 # Carbon Black Qt API demo
 
+<br>
+<div align = center>
+[![Badge License]][License]   
+[![Badge Likes]][#]
+<br>
+<br>
+</div>
+
+
 ## What can it do? 
 
 * Lists policies with indicators that tell you things like number of rules, UI `ON/OFF`, GoLive `ON/OFF` 
@@ -12,7 +21,11 @@
 
 ## For Microsoft Windows users
 
-Zip files containing cbapi-qt-demo.exe are available in "Releases" section, on the right of the main page for this project.
+Zip files containing cbapi-qt-demo.exe are available in [Releases section](https://github.com/slist/cbapi-qt-demo/releases).
+
+## For MacOS users
+
+A DMG file containing cbapi-qt-demo is available in [Releases section](https://github.com/slist/cbapi-qt-demo/releases).
 
 
 ## How to build on Linux CentOS
@@ -32,6 +45,14 @@ qmake-qt5
 make
 ./cbapi-qt-demo
 ```
+
+## How to build on Linux Ubuntu 23.04
+
+Install qt6-wayland, and follow instructions for Ubuntu 22.04, 22.10 (Qt6).
+``` sh
+sudo apt install qt6-wayland
+```
+
 
 ## How to build on Linux Ubuntu 22.04 LTS or 22.10 (Qt5: recommended version)
 
@@ -93,11 +114,13 @@ Click on Top Left of your screen on "Activities", search your newly created appl
 
 ## Warning
 
-Warning : Settings/passwords are stored in plain text.
+Warning : Settings/passwords are stored in plain text using unsecure [QSettings](https://doc.qt.io/qt-6/qsettings.html) of Qt framework.
 
-For Linux, see ~/.config/Carbon Black/cb.conf
+For Linux, see ~/.config/VMware\ Carbon\ Black/cbapi-qt-demo.conf
 
-For Windows, see HKEY_CURRENT_USER\Software\Carbon Black\cb
+For Windows, see HKEY_CURRENT_USER\Software\VMware Carbon Black\cbapi-qt-demo
+
+For Mac, see $HOME/Library/Preferences/com/VMware\ Carbon\ Black/cbapi-qt-demo
 
 ## Resources
 
@@ -111,4 +134,4 @@ If you have questions on the Carbon Black Qt API, please contact me at slist@vmw
 
 ## License
 
-Use of this software is governed by the license found in LICENSE.md.
+Use of this software is governed by the MIT license.
