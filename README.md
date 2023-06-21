@@ -1,17 +1,8 @@
 # Carbon Black Qt API demo
 
-<br>
-<div align = center>
-[![Badge License]][License]   
-[![Badge Likes]][#]
-<br>
-<br>
-</div>
-
-
 ## What can it do? 
 
-* Lists policies with indicators that tell you things like number of rules, UI `ON/OFF`, GoLive `ON/OFF` 
+* Lists policies with indicators that tell you things like number of rules, UI `ON/OFF`, number of devices, GoLive `ON/OFF`.
 
 * Let's you compare policies side-by-side, even in different customer instances — you can select two policies, see exactly where there are differences and what they are 
 
@@ -21,7 +12,7 @@
 
 ## For Microsoft Windows users
 
-Zip files containing cbapi-qt-demo.exe are available in [Releases section](https://github.com/slist/cbapi-qt-demo/releases).
+A Zip file containing cbapi-qt-demo.exe is available in [Releases section](https://github.com/slist/cbapi-qt-demo/releases).
 
 ## For MacOS users
 
