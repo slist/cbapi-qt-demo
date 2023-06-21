@@ -112,12 +112,12 @@ void Copy::send(void)
         QJsonParseError error;
         QJsonDocument json_doc = QJsonDocument::fromJson(*policy_data, &error);
         if (json_doc.isNull()) {
-            qDebug("Failed parse JSON");
+            qDebug() << tr("Failed parse JSON");
             manager->deleteLater();
             return;
         }
         if (!json_doc.isObject()) {
-            qDebug("JSON is not an object.");
+            qDebug() << tr("JSON is not an object.");
             manager->deleteLater();
             return;
         }

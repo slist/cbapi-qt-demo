@@ -58,7 +58,7 @@ void IpList::lookedUp(const QHostInfo &host)
     bool newIP = false;
 
     if (host.error() != QHostInfo::NoError) {
-        qDebug() << "Lookup failed:" << host.errorString();
+        qDebug() << tr("Lookup failed:") << host.errorString();
         QMessageBox::critical(this, tr("Lookup failed"), host.errorString(), QMessageBox::Ok);
         return;
     }
@@ -101,10 +101,11 @@ void IpList::lookedUp(const QHostInfo &host)
     settings.setValue(ui->comboBox_region->currentText() + "_iplist", ipList);
 }
 
-void IpList::on_comboBox_region_currentIndexChanged(int i)
+void IpList::on_comboBox_region_currentIndexChanged(int index)
 {
     int count = 0;
     QSettings settings;
+    Q_UNUSED(index);
 
     ui->plainTextEdit->clear();
     ipList_new.clear();

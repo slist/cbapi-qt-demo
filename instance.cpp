@@ -71,23 +71,27 @@ bool Instance::isValid()
     return true;
 }
 
-void Instance::on_customer_name_LineEdit_textChanged(const QString & /* arg1 */)
+void Instance::on_customer_name_LineEdit_textChanged(const QString & arg1)
 {
+    Q_UNUSED(arg1);
     check_validity();
 }
 
-void Instance::on_api_id_LineEdit_textChanged(const QString & /* arg1 */)
+void Instance::on_api_id_LineEdit_textChanged(const QString & arg1)
 {
+    Q_UNUSED(arg1);
     check_validity();
 }
 
-void Instance::on_api_secret_LineEdit_textChanged(const QString & /* arg1 */)
+void Instance::on_api_secret_LineEdit_textChanged(const QString & arg1)
 {
+    Q_UNUSED(arg1);
     check_validity();
 }
 
-void Instance::on_org_key_LineEdit_textChanged(const QString & /* arg1 */)
+void Instance::on_org_key_LineEdit_textChanged(const QString & arg1)
 {
+    Q_UNUSED(arg1);
     check_validity();
 }
 
@@ -103,19 +107,5 @@ void Instance::check_validity()
 void Instance::setInstanceType(Instances::InstanceType type)
 {
     instanceType = type;
-
-    switch(type) {
-    case Instances::NgavInstanceType:
-//        ui->org_label->hide();
-//        ui->org_key_LineEdit->hide();
-        break;
-    case Instances::EedrInstanceType:
-        break;
-    case Instances::EdrInstanceType:
-        break;
-    default:
-        qDebug("Unknown instance type");
-        break;
-    }
     check_validity();
 }

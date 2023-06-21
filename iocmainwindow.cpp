@@ -91,6 +91,6 @@ void IocMainWindow::slotFinished()
 
 void IocMainWindow::on_comboBox_currentIndexChanged(int i)
 {
-    qDebug() << "TODO, change index" << i;
+    Q_UNUSED(i);
     // refresh(); TODO !
 }

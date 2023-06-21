@@ -47,8 +47,9 @@ void Welcome::on_pushButton_aboutQt_clicked() {
     QMessageBox::aboutQt(this, "cb");
 }
 
-void Welcome::on_checkBox_DarkMode_stateChanged(int /* arg1*/) {
+void Welcome::on_checkBox_DarkMode_stateChanged(int i) {
     QSettings settings;
+    Q_UNUSED(i);
 
     if (ui->checkBox_DarkMode->checkState() == Qt::Checked) {
         qDebug("dark mode");

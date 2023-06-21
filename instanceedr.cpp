@@ -64,17 +64,20 @@ void InstanceEdr::check_validity()
     }
 }
 
-void InstanceEdr::on_lineEdit_name_textChanged(const QString & /* arg1 */)
+void InstanceEdr::on_lineEdit_name_textChanged(const QString & arg1)
 {
+    Q_UNUSED(arg1);
     check_validity();
 }
 
-void InstanceEdr::on_lineEdit_url_textChanged(const QString & /* arg1 */)
+void InstanceEdr::on_lineEdit_url_textChanged(const QString & arg1)
 {
+    Q_UNUSED(arg1);
     check_validity();
 }
 
-void InstanceEdr::on_lineEdit_api_textChanged(const QString & /* arg1 */)
+void InstanceEdr::on_lineEdit_api_textChanged(const QString &arg1)
 {
+    Q_UNUSED(arg1);
     check_validity();
 }
