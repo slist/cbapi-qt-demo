@@ -53,8 +53,8 @@ DiffTool::DiffTool(QWidget *parent) :
         ui->plainTextEdit->appendPlainText(tr("C:\\Program Files (x86)\\WinMerge\\WinMergeU.exe\n"));
     } else if (os.contains("macOS", Qt::CaseInsensitive)) {
         ui->plainTextEdit->appendPlainText(tr("Select a graphical diff tool"));
-        ui->plainTextEdit->appendHtml(tr("For example Meld --&gt; /Applications/Meld.app/Contents/MacOS/Meld"));
-        ui->plainTextEdit->appendHtml(tr("From here: <a href=\"https://yousseb.github.io/meld/\">Meld for OSX</a>"));
+        ui->plainTextEdit->appendHtml(tr("For example Meld for OSX --&gt; /Applications/Meld.app/Contents/MacOS/Meld"));
+        ui->plainTextEdit->appendHtml(tr("You can download Meld here: https://yousseb.github.io/meld/"));
     } else {
         ui->plainTextEdit->appendPlainText(tr("Select a graphical diff tool,"));
         ui->plainTextEdit->appendPlainText(tr("for example Meld"));

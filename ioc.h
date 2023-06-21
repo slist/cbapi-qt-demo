@@ -52,10 +52,11 @@ private slots:
     void slotError(QNetworkReply::NetworkError);
     void slotSslErrors(QList<QSslError>);
     void slotFinished();
-    void on_comboBox_server_currentIndexChanged(int index);
     void on_pushButton_list_ioc_clicked();
     void on_pushButton_list_ip_clicked();
     void on_pushButton_json_view_clicked();
+    void on_comboBox_server_currentIndexChanged(int i);
+
 
 public slots:
     void watchlistDownloadFinished(const QString &);

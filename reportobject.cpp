@@ -26,7 +26,11 @@ void ReportObject::fetch_report()
     request.setRawHeader("X-Auth-Token", auth.toLocal8Bit());
 
     reply = manager->get(request);
+
+#if QT_VERSION_MAJOR == 5
     connect(reply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(slotError(QNetworkReply::NetworkError)));
+#endif
+
     connect(reply, SIGNAL(sslErrors(QList<QSslError>)), this, SLOT(slotSslErrors(QList<QSslError>)));
     connect(reply, SIGNAL(finished()), this, SLOT(slotFinished()));
 }
