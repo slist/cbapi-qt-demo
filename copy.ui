@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>862</width>
-    <height>356</height>
+    <width>1012</width>
+    <height>489</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -47,6 +47,13 @@
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="checkBox_ignore_rule_configs">
+     <property name="text">
+      <string>Ignore rule_configs (XDR and Host Based Firewall parameters)</string>
+     </property>
     </widget>
    </item>
    <item>

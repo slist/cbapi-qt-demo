@@ -124,7 +124,11 @@ void Copy::send(void)
         QJsonObject root = json_doc.object();
         root.remove("id");
         root.insert("org_key", QJsonValue(dest_org_key));
-        root.remove("rule_configs"); // avoid Feature flags error ..
+
+        if (ui->checkBox_ignore_rule_configs->isChecked()) {
+            root.remove("rule_configs");
+        }
+
         json_doc = QJsonDocument(root);
         *policy_data = json_doc.toJson();
 
