@@ -308,6 +308,12 @@ onprem or hosted
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_Dialog">
+     <property name="topMargin">
+      <number>30</number>
+     </property>
+     <property name="bottomMargin">
+      <number>20</number>
+     </property>
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
@@ -322,13 +328,32 @@ onprem or hosted
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_cancel">
+      <widget class="QPushButton" name="pushButton_save">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="sizeIncrement">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
-        <string>Cancel</string>
+        <string> Save</string>
        </property>
        <property name="icon">
         <iconset resource="cbapi-qt-demo.qrc">
-         <normaloff>:/img/cancel.png</normaloff>:/img/cancel.png</iconset>
+         <normaloff>:/img/save.png</normaloff>:/img/save.png</iconset>
        </property>
       </widget>
      </item>
@@ -346,13 +371,26 @@ onprem or hosted
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_save">
+      <widget class="QPushButton" name="pushButton_cancel">
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>30</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
-        <string>Save</string>
+        <string> Cancel</string>
        </property>
        <property name="icon">
         <iconset resource="cbapi-qt-demo.qrc">
-         <normaloff>:/img/save.png</normaloff>:/img/save.png</iconset>
+         <normaloff>:/img/cancel.png</normaloff>:/img/cancel.png</iconset>
        </property>
       </widget>
      </item>

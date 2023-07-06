@@ -4,9 +4,10 @@
 #ifndef VERSION_H_
 #define VERSION_H_
 
-#define VERSION "1.6"
+#define VERSION "1.7"
 
 /*
+ * 1.7 07/06/2023 Add posibility to ignore rule_configs when copying policy
  * 1.6 06/21/2023 Improve Windows and  MacOS packages
  * 1.5 06/19/2023 Use new policy API v1
  * 1.4 03/20/2023 Add AppControl server configuration
