@@ -16,7 +16,7 @@ defaults:
 
 env:
   SOURCE_DIR:   ${{ github.workspace }}
-  QT_VERSION:   6.5.0
+  QT_VERSION:   6.7.0
   ARTIFACT:     cbapi-qt-demo.dmg
 
 jobs:
@@ -30,7 +30,7 @@ jobs:
           submodules: recursive
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3.2.0
+        uses: jurplel/install-qt-action@v3.3.0
         with:
           version: ${{ env.QT_VERSION }}
           modules: 'qt5compat'
