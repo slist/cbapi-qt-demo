@@ -126,4 +126,5 @@ If you have questions on the Carbon Black Qt API, please contact me at slist@vmw
 ## License
 
 Use of this software is governed by the MIT license.
+
 [![license](https://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/slist/cbapi-qt-demo/refs/heads/master/LICENSE)
