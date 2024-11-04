@@ -121,7 +121,7 @@ For Mac, see $HOME/Library/Preferences/com/VMware\ Carbon\ Black/cbapi-qt-demo
 
 ## Support
 
-If you have questions on the Carbon Black Qt API, please contact me at slist@vmware.com
+This application is not supported anymore, and will not be updated.
 
 ## License
 
